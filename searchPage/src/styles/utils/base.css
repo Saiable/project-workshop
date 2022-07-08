@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+/*:root -> 获取根元素html*/
+:root {
+    --color-text: #666;
+    --color-high-text: #ff5777;
+    --color-tint: #ff8198;
+    --color-background: #fff;
+    --font-size: 14px;
+    --line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    user-select: none; /* 禁止用户鼠标在页面上选中文字/图片等 */
+    -webkit-tap-highlight-color: transparent; /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+    background: var(--color-background);
+    color: var(--color-text);
+    /* rem vw/vh */
+    width: 100vw;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+
+.clear-fix::after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.clear-fix {
+    zoom: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.z-minus-100 {
+    z-index: -100;
+}
+
+.z-100 {
+    z-index: 100;
+}
+
+.z-200 {
+    z-index: 200;
+}
+
+.z-300 {
+    z-index: 300;
+}
+
+.z-400 {
+    z-index: 400;
+}
+
+.z-500 {
+    z-index: 500;
+}
+
+.z-600 {
+    z-index: 600;
+}
+
+.z-700 {
+    z-index: 700;
+}
+
+.z-800 {
+    z-index: 800;
+}
+
+.z-900 {
+    z-index: 900;
+}
+
+.z-1000 {
+    z-index: 1000;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fixed-center {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rounded {
+    border-radius: 4px;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+}

@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.bgbox {
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+
+  width: 100%;
+  height: 100%;
+
+  transition: transform .25s, filter .25s;
+}
+.bgbox.focus {
+  filter: blur(5px);
+  transform: scale(1.04);
+}
+div.transition-bg {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+}
+

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.my-avator {
+  position: absolute;
+}
+
+
+.avator {
+  overflow: hidden;
+
+  width: 38px;
+  height: 38px;
+  border-radius: 60px;
+  background-color: lightgrey;
+  background-position: center;
+  background-size: contain;
+}
+
+.avator img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+
+/*.nick-name {*/
+/*  display: inline;*/
+/*  position: absolute;*/
+/*  top: 20px;*/
+/*  left: 55px;*/
+
+/*  font-size: 16px;*/
+/*  color: white;*/
+
+/*  cursor: pointer;*/
+/*}*/
+
+.person-card {
+  display: block;
+  position: absolute;
+  bottom: -38px;
+  right: -98px;
+
+  width: 90px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,.2);
+
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
+
+}
+
+.person-card li {
+  list-style: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+}
+
+.person-card li:hover{
+  border-radius: 5px;
+  background-color: whitesmoke;
+
+  color: #3a8ee6;
+}
+
+.avator:hover .person-card{
+  display: block;
+}
