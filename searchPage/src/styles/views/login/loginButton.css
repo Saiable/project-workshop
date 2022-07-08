@@ -1,0 +1,107 @@
+/*button-body{*/
+/*  height: 100vh;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+.button-body {
+  display: flex;
+  /*box-shadow: 5px 5px 10px rgba(255,255,255,.2);*/
+}
+.login {
+  position: relative;
+
+  border: none;
+  outline: none;
+
+  width: 7rem;
+  height: 3rem;
+  border-radius: 5rem;
+  background-color: rgba(255,255,255,.25);
+  color: lightgrey;
+  font-weight: bold;
+  font-size: 1.2rem;
+  box-shadow: 5px 5px 20px rgba(255,255,255,.2);
+  /*opacity: .7;*/
+  cursor: pointer;
+  transition: .5s;
+}
+
+.login:hover {
+  border-top: 1px solid whitesmoke;
+  border-left: 1px solid whitesmoke;
+}
+.active.login {
+  width: 3rem;
+  color: transparent;
+}
+
+.loading {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.active .loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 70%;
+  height: 40%;
+  /* background-color: whitesmoke; */
+
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  opacity: 1;
+}
+
+.active .loading div {
+  width: .3rem;
+  height: .3rem;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  animation: .9s loading ease-in-out infinite alternate;
+
+}
+
+@keyframes loading {
+  to {
+    transform: translate(0, -1rem);
+  }
+}
+
+.active .loading div:nth-child(2) {
+  animation-delay: .1s;
+}
+
+.active .loading div:nth-child(3) {
+  animation-delay: .3s;
+}
+
+.verity .loading {
+  opacity: 0;
+}
+
+.checkmark {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+
+  /* 利用strokedash的虚线和偏移值来达到加载的动画效果 */
+  stroke-dasharray: 36px;
+  stroke-dashoffset: 36px;
+}
+
+.verity .checkmark {
+  animation: .6s show forwards;
+  animation-delay: .2s;
+}
+
+@keyframes show {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
