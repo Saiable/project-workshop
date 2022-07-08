@@ -17,6 +17,7 @@
   - 导入导出兼容市面常见浏览器
 
 # searchPage后台
+[搜索书签后台](https://github.com/Saiable/project-workshop/blob/search-page-backend/README.md)
 ## 技术栈
 - 前台基于`vue-admin-template`二开，主要用他的根据路由动态生成侧边栏的功能
 - 后台基于go
@@ -26,6 +27,7 @@
 - 服务器资源监控可视化
 
 # 插件版
+[插件版](https://github.com/Saiable/project-workshop/blob/search-page-crx/README.md)
 - 掌握chrome插件开发必要知识储备，基于本地开发要求重写`vue-cli`配置，以支持工程化开发
 - 基于`web`版二开，支持用户快捷添加导航及书签
 
