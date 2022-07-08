@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "iMe search",
+  "description": "浏览器主页工具",
+  "version": "2.0.0",
+  "browser_action": {
+    "default_title": "浏览器主页工具",
+    "default_icon": "assets/images/devil.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "bookmarks",
+    "chrome://favicon/",
+    "http://*/",
+    "https://*/",
+    "background",
+    "tabs",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "js/chunk-vendors.js",
+      "js/background.js"
+    ]
+  },
+  "icons": {
+    "16": "assets/images/devil.png",
+    "48": "assets/images/devil.png",
+    "128": "assets/images/devil.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "css": [
+        "css/content.css"
+      ],
+      "js": [
+        "js/chunk-vendors.js",
+        "js/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    "js/inject.js"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://widget.qweather.net https://webapi.amap.com https://cdn.qweather.com/ https://restapi.amap.com ; object-src 'self'"
+}

@@ -1,0 +1,44 @@
+<template>
+    <div class="content_page">
+        content_page
+        <div class="content_page_main">
+          content_page_main
+          {{Data}}
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data() {
+            return {
+                Data: '哈哈',
+            }
+        },
+        methods: {
+            test() {
+                // 可以用来更换插件的图标
+                chrome.browserAction.setIcon({
+                    path: 'assets/images/icon48.png',
+                });
+                alert('我是background！');
+            }
+        },
+        mounted() {
+            this.test();
+        },
+    }
+</script>
+
+<style scoped>
+    /*.content_page{*/
+    /*  color: red;*/
+    /*  position: fixed;*/
+    /*  z-index: 100001;*/
+    /*  right: 10px;*/
+    /*  bottom: 10px;*/
+    /*  .content_page_main{*/
+    /*    color: green;*/
+    /*  }*/
+    /*}*/
+</style>
