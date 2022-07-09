@@ -130,11 +130,11 @@
 
     <template>
       <el-dialog title="修改用户基本信息" :visible.sync="dialogFormVisible">
-        <el-form :model="form">
-          <el-form-item label="昵称" :label-width="formLabelWidth">
+        <el-form :model="form" :label-width="formLabelWidth" size="small">
+          <el-form-item label="昵称">
             <el-input v-model="form.nickname" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="性别" :label-width="formLabelWidth">
+          <el-form-item label="性别">
             <el-switch
                 v-if="form.gender !== 2"
                 v-model="switchValue"
@@ -143,27 +143,66 @@
             </el-switch>
             <span v-else>保密</span>
           </el-form-item>
-          <el-form-item label="账户" :label-width="formLabelWidth">
+          <el-form-item label="账户">
             <el-input v-model="form.passport" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="密码" :label-width="formLabelWidth">
+          <el-form-item label="密码">
             <el-input v-model="form.password" autocomplete="off"></el-input>
           </el-form-item>
-          <el-form-item label="邮箱" :label-width="formLabelWidth">
+          <el-form-item label="邮箱">
             <el-input v-model="form.email" autocomplete="off"></el-input>
           </el-form-item>
+          <el-form-item label="blankOrSel">
+            <el-input v-model="form.blankOrSelf" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="createAt">
+            <el-input v-model="form.createAt" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="deleteAt">
+            <el-input v-model="form.deleteAt" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="engine">
+            <el-input v-model="form.engine" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="engineSort">
+            <el-input v-model="form.engineSort" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="headLogo">
+            <el-input v-model="form.headLogo" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="navigation">
+            <el-input v-model="form.navigation" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="navigationSort">
+            <el-input v-model="form.navigationSort" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="searchHistory">
+            <el-input v-model="form.searchHistory" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="switchWallpaper">
+            <el-input v-model="form.switchWallpaper" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="updateAt">
+            <el-input v-model="form.updateAt" autocomplete="off"></el-input>
+          </el-form-item>
+          <el-form-item label="vague">
+            <el-input v-model="form.vague" autocomplete="off"></el-input>
+          </el-form-item>
         </el-form>
+
         <div slot="footer" class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取 消</el-button>
+          <el-button @click="cancelModify">取 消</el-button>
           <el-button type="primary" @click="confirmModify">确 定</el-button>
         </div>
       </el-dialog>
+
     </template>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
+import 'element-ui/lib/theme-chalk/display.css';
 
 export default {
   name: 'User',
@@ -180,7 +219,7 @@ export default {
       form: {
         gender: true
       },
-      formLabelWidth: '120px',
+      formLabelWidth: '150px',
       switchValue: true,
     }
   },
@@ -203,10 +242,23 @@ export default {
     },
     handleEdit(userInfo) {
       this.form = userInfo
-
       this.switchValue = userInfo.gender == 0 ? true : false
-
       this.dialogFormVisible = true
+    },
+    confirmModify() {
+      this.form.gender = this.switchValue == true ? 0 : 1
+      if (!this.form.headLogo) {
+        this.form.headLogo = 'test'
+      }
+      const payload = this.form
+
+      console.log(payload)
+      this.$store.dispatch('user/modifyUserList', payload)
+      this.dialogFormVisible = false
+    },
+    cancelModify() {
+      this.dialogFormVisible = false
+
     },
     deleteRow(id, index, rows) {
       rows.splice(index, 1); // 前端视觉上操作数据源进行删除
@@ -243,14 +295,7 @@ export default {
     showRemove(id) {
       return (id !== this.selectSingleId) ? true : false
     },
-    confirmModify() {
-      this.form.gender = this.switchValue == true ? 0 : 1
 
-      const payload = this.form
-      console.log(payload)
-
-      this.dialogFormVisible = false
-    }
   }
 }
 </script>
@@ -260,6 +305,27 @@ export default {
   width: 340px;
 
   margin: 0 auto;
+}
+
+.el-col {
+  border-radius: 4px;
+}
+
+.bg-purple-dark {
+  background: #99a9bf;
+}
+
+.bg-purple {
+  background: #d3dce6;
+}
+
+.bg-purple-light {
+  background: #e5e9f2;
+}
+
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
 }
 </style>
 

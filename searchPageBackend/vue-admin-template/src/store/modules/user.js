@@ -1,4 +1,4 @@
-import {login, logout, getInfo, getInfoFront, getUserList, deleteUserList} from '@/api/user'
+import {login, logout, getInfo, getInfoFront, getUserList, deleteUserList, modifyUserList} from '@/api/user'
 import {getToken, setToken, removeToken} from '@/utils/auth'
 import {resetRouter} from '@/router'
 import {Message} from 'element-ui';
@@ -110,7 +110,13 @@ const actions = {
                 type: 'success'
             })
         }
-    }
+    },
+
+    // modifyUserList
+    async modifyUserList({commit}, payload) {
+        const res = await modifyUserList(payload)
+        console.log(res)
+    },
 }
 
 export default {
