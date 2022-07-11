@@ -1,7 +1,6 @@
 @echo off
 echo "DOCS PUSH BAT"
 
-
 echo "1. Start submitting code to the local repository"
 git add .
  
