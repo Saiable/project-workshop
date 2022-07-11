@@ -1,18 +1,33 @@
 class Observer {
     constructor(data) {
-        this.walk(data)
+        if(Array.isArray(data)) {
+            // 这里我们可以重写数组的7个变异方法（可以修改数组本身）
+            data.__proto__ = {
+                push() {
+                    console.log('重写的push')
+                }
+            }
+            // this.observeArray(data) // 递归处理数组中的对象
+        } else {
+            this.walk(data)
+        }
     }
 
     walk(data) { // 循环对象，对属性依此劫持
         // 重新定义属性
         Object.keys(data).forEach(key => defineReactive(data, key, data[key]))
     }
+    observeArray(data) {
+        data.forEach(item => observe(item))
+    }
 }
 
 // 向外导出该方法，供单独使用
 export function defineReactive(target, key, value) { // 闭包
+    observe(value) // observe内部对value进行判断了，是个对象，会再次创建Observer实例，再次调用walk方法，劫持每个属性
     Object.defineProperty(target, key, {
         get() { // 取值的时候，会执行get
+            console.log('key', key)
             return value
         },
         set(newValue) { // 修改值的时候，会执行set
@@ -21,6 +36,7 @@ export function defineReactive(target, key, value) { // 闭包
         }
     })
 }
+
 export function observe(data) {
     // console.log(data)
     // 对data类型进行判断

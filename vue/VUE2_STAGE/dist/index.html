@@ -8,17 +8,28 @@
   <title>Document</title>
 </head>
 <body>
-  <script src="./vue.js"></script>
-  <script>
+<script src="./vue.js"></script>
+<script>
     const vm = new Vue({
         data() {
             return {
                 name: 'sai',
-                age: 11
+                age: 11,
+                address: {
+                    street: 'RoadA',
+                    room: 123
+                },
+                hobby: [
+                    'eat',
+                    'drink',
+                    {
+                        a: 1
+                    }
+                ]
             }
         }
     })
-    console.log(vm)
-  </script>
+    vm.hobby.push('1')
+</script>
 </body>
 </html>

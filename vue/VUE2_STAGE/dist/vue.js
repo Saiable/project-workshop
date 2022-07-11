@@ -43,7 +43,16 @@
     function Observer(data) {
       _classCallCheck(this, Observer);
 
-      this.walk(data);
+      if (Array.isArray(data)) {
+        // 这里我们可以重写数组的7个变异方法（可以修改数组本身）
+        data.__proto__ = {
+          push: function push() {
+            console.log('重写的push');
+          }
+        }; // this.observeArray(data) // 递归处理数组中的对象
+      } else {
+        this.walk(data);
+      }
     }
 
     _createClass(Observer, [{
@@ -55,6 +64,13 @@
           return defineReactive(data, key, data[key]);
         });
       }
+    }, {
+      key: "observeArray",
+      value: function observeArray(data) {
+        data.forEach(function (item) {
+          return observe(item);
+        });
+      }
     }]);
 
     return Observer;
@@ -63,9 +79,12 @@
 
   function defineReactive(target, key, value) {
     // 闭包
+    observe(value); // observe内部对value进行判断了，是个对象，会再次创建Observer实例，再次调用walk方法，劫持每个属性
+
     Object.defineProperty(target, key, {
       get: function get() {
         // 取值的时候，会执行get
+        console.log('key', key);
         return value;
       },
       set: function set(newValue) {
@@ -96,14 +115,30 @@
     }
   }
 
+  function proxy(vm, target, key) {
+    Object.defineProperty(vm, key, {
+      // vm.name
+      get: function get() {
+        return vm[target][key]; // vm.name实际上是去vm._data.name上去取值了
+      },
+      set: function set(newValue) {
+        vm[target][key] = newValue; // 这性能的确不太好，每一个`key`都加了一层
+      }
+    });
+  }
+
   function initData(vm) {
     var data = vm.$options.data;
     data = typeof data === 'function' ? data.call(vm) : data; // 对数据进行劫持,vue2中采用了defineProperty
-    // 定义一个方法obeserve观测数据，这是一个核心模块，我们单独新建observe文件夹进行处理
+    // 观测之前，把data放一份到vm._data身上
 
-    observe(data); // 观测之前，把data放一份到vm._data身上
+    vm._data = data; // 定义一个方法obeserve观测数据，这是一个核心模块，我们单独新建observe文件夹进行处理
 
-    vm._data = data;
+    observe(data); // 将vm._data用vm来代理，简化用户写法
+
+    for (var key in data) {
+      proxy(vm, '_data', key);
+    }
   }
 
   function initMixin(Vue) {
