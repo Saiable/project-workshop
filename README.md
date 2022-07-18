@@ -1,4 +1,1 @@
-# project-workshop
-
-## 2022年7月8日
-- create branches for different projects, [search page readme](https://github.com/Saiable/project-workshop/tree/search-page-frontend)
+https://www.bilibili.com/video/BV1Vf4y1T7bw?p=3&vd_source=1b462828c3eae49e5645f411d81e5ea8
