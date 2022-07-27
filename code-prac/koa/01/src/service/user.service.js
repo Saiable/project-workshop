@@ -1,4 +1,5 @@
 const User = require('../model/user.model')
+
 class UserService {
 
     async createUser(user_name, password) {
@@ -20,6 +21,7 @@ class UserService {
             where: whereOpt
         })
 
+        // console.log('' + res)
         return res ? res.dataValues : null
     }
 }
