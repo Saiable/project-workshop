@@ -2,7 +2,7 @@ const Koa = require('koa')
 const Router = require('@koa/router')
 const koaBody = require('koa-body')
 const userRouter = require('../router/user.route')
-const errHandler = require('./errorHandler')
+const errHandler = require('./errHandler')
 const app = new Koa()
 
 app.use(koaBody())
