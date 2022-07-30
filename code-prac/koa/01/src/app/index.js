@@ -7,11 +7,11 @@ const app = new Koa()
 
 app.use(koaBody())
 const indexRouter = new Router()
-indexRouter.get('/', (ctx, next) => {   
-    ctx.body = `Request Body: ${JSON.stringify(ctx.request.body)}`
-})
+// indexRouter.get('/', (ctx, next) => {   
+//     ctx.body = `Request Body: ${JSON.stringify(ctx.request.body)}`
+// })
 
-app.use(indexRouter.routes())
+// app.use(indexRouter.routes())
 app.use(userRouter.routes())
 
 

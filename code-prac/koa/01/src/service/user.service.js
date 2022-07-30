@@ -16,11 +16,11 @@ class UserService {
         is_admin && Object.assign(whereOpt, {is_admin})
 
         // 调用ORM查询接口：findOne，这是一个异步函数
-        const res = User.findOne({
+        const res = await User.findOne({
             attributes: ['id', 'user_name', 'password', 'is_admin'],
             where: whereOpt
         })
-
+        // console.log(aa)
         // console.log('' + res)
         return res ? res.dataValues : null
     }

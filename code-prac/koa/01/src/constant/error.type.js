@@ -1,4 +1,6 @@
 // 定义错误类型
+// 100 用户模块
+// 101 授权模块
 module.exports = {
     userFormateError: {
         code: '10001',
@@ -22,7 +24,7 @@ module.exports = {
     },
     userNotFound: {
         code: '10005',
-        message: '用户不存在',
+        message: '账号或密码错误', // 不能说是账号错误
         result: ''
     },
     userLoginFailed: {
@@ -31,8 +33,18 @@ module.exports = {
         result: ''
     },
     userInvalidPassword: {
-        code: '10007',
+        code: '10005',
         message: '账号或密码错误',// 不能说是密码错误，否则就告诉了登录这，账号是对的，就可能会被暴力破解
-        result: ''  
+        result: ''
+    },
+    tokenExpiredError: {
+        code: '10101',
+        message: 'token已过期',
+        result: ''
+    },
+    invalidToken: {
+        code: '10102',
+        message: '无效的token',
+        result: ''
     }
 }

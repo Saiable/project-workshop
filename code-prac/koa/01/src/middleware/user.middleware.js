@@ -38,7 +38,7 @@ const verifyUser = async (ctx, next) => {
 const scyptPassword = async (ctx, next) => {
     const { password } = ctx.request.body
     const salt = bcrypt.genSaltSync(10); // 生成盐
-    const hash = bcrypt.hashSync("B4c0/\/", salt); // 根据盐生成hash，hash保存的是密文
+    const hash = bcrypt.hashSync(password, salt); // 根据盐生成hash，hash保存的是密文
     ctx.request.body.password = hash // 使用hash覆盖password
     await next()
 }
@@ -50,22 +50,26 @@ const verifyLogin = async (ctx, next) => {
         const res = await getUserInfo({ user_name })
         if (!res) {
             console.log('用户不存在', res)
-            return ctx.app.emit('error', userNotFound, ctx)
+            ctx.app.emit('error', userNotFound, ctx)
+            return
         }
         // 2.找到了用户，比对密码是否匹配（不匹配：报错）
         if (!bcrypt.compareSync(password, res.password)) {
-            return ctx.app.emit('error', userInvalidPassword, ctx)
-
+            console.log(password, res.password) // 123 $2a$10$JNqImWf37hDWHtVFwlrj1ujKTKvxpmYFTU7JSIWv2EQ0W3l9BG5oG
+            ctx.app.emit('error', userInvalidPassword, ctx)
+            return
         }
     } catch (err) {
         console.error(err)
-        return ctx.app.emit('error', userLoginFailed, ctx) // getUserInfo出错，在不同场景下，抛出的错误应该是不同的
+        ctx.app.emit('error', userLoginFailed, ctx) // getUserInfo出错，在不同场景下，抛出的错误应该是不同的
+        return
     }
 
     //通过
     await next()
 
 }
+
 
 module.exports = {
     userValidator,
