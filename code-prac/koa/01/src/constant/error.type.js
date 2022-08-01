@@ -69,5 +69,25 @@ module.exports = {
         code: '10202',
         message: '不支持的文件类型',
         result:''
+    },
+    goodsParamsError: {
+        code: '10203',
+        message: '商品参数格式错误',
+        result:''
+    },
+    publishGoodsError: {
+        code: '10204',
+        message: '商品发布失败',
+        result:''  
+    },
+    invalidGoodsId: {
+        code: '10205',
+        message: '待修改的商品不存在',
+        result:''  
+    },
+    updateGoodsError: {
+        code: '10206',
+        message: '更新商品失败',
+        result:''  
     }
 }

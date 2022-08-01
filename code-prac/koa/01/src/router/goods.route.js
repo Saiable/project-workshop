@@ -1,11 +1,13 @@
 const Router = require('@koa/router')
 const router = new Router({ prefix: '/goods' })
 
-const { upload, release } = require('../controller/goods.controller')
+const { upload, release, update } = require('../controller/goods.controller')
 const { auth, hasAdminPermission } = require('../middleware/auth.middleware')
 const { validator } = require('../middleware/goods.middleware')
 // 商品图片上传接口
 router.post('/upload', auth, hasAdminPermission, upload)
-//发布商品接口
+// 发布商品接口
 router.post('/release', auth, hasAdminPermission, validator, release)
+// 修改商品接口
+router.put('/update/:id',auth, hasAdminPermission, validator, update)
 module.exports = router
