@@ -23,6 +23,8 @@ const Goods = seq.define('sai_goods', {
         allowNull: false,
         comment: '商品图片的url地址'
     }
+}, {
+    paranoid: true
 })
 
 // 创建表后注释掉

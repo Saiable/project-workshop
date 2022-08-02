@@ -1,7 +1,7 @@
 const path = require('path')
 
 const { fileUploadFailed, unSupportedFileType, publishGoodsError, invalidGoodsId, updateGoodsError } = require('../constant/error.type')
-const { createGoods, updateGoods } = require('../service/goods.service')
+const { createGoods, updateGoods, removeGoods, restoreGoods, findGoods } = require('../service/goods.service')
 class GoodsController {
     async upload(ctx, next) {
         const { file } = ctx.request.files
@@ -56,6 +56,47 @@ class GoodsController {
             return ctx.app.emit('error', updateGoodsError, ctx)
         }
     }
-}
 
+    async remove(ctx, next) {
+        const res = await removeGoods(ctx.params.id)
+        if (res) {
+            ctx.body = {
+                code: 0,
+                message: '商品下架成功',
+                result: ''
+            }
+        } else {
+            return ctx.app.emit('error', invalidGoodsId, ctx)
+        }
+    }
+
+    async restore(ctx, next) {
+        const res = await restoreGoods(ctx.params.id)
+        if (res) {
+            ctx.body = {
+                code: 0,
+                message: '商品上架成功',
+                result: ''
+            }
+        } else {
+            return ctx.app.emit('error', invalidGoodsId, ctx)
+        }
+    }
+
+    async findAll(ctx, next) {
+        try {
+            console.log(ctx.params.query)
+
+            const { pageNum = 1, pageSize = 10 } = ctx.request.query
+            const res = await findGoods(pageNum, pageSize)
+            ctx.body = {
+                code: 0,
+                message: '获取商品列表成功',
+                result: res
+            }
+        } catch(err) {
+            console.error(err)
+        }
+    }
+}
 module.exports = new GoodsController()
