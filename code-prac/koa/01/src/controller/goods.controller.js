@@ -85,8 +85,6 @@ class GoodsController {
 
     async findAll(ctx, next) {
         try {
-            console.log(ctx.params.query)
-
             const { pageNum = 1, pageSize = 10 } = ctx.request.query
             const res = await findGoods(pageNum, pageSize)
             ctx.body = {

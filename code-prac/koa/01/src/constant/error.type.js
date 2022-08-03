@@ -2,6 +2,7 @@
 // 100 用户模块
 // 101 授权模块
 // 103 资源模块
+// 104 购物车模块
 
 // 每一种类型可以进一步携带status
 module.exports = {
@@ -89,5 +90,6 @@ module.exports = {
         code: '10206',
         message: '更新商品失败',
         result:''  
-    }
+    },
+    
 }
