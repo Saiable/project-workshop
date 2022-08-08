@@ -1,8 +1,10 @@
 // 定义错误类型
 // 100 用户模块
 // 101 授权模块
-// 103 资源模块
-// 104 购物车模块
+// 102 资源模块
+// 103 购物车模块
+// 104 地址模块
+// 105 订单模块
 
 // 每一种类型可以进一步携带status
 module.exports = {
@@ -59,37 +61,52 @@ module.exports = {
     hasNoAdminPermission: {
         code: '10103',
         message: '无管理员权限',
-        result:''
+        result: ''
     },
     fileUploadFailed: {
         code: '10201',
         message: '商品图片上传失败',
-        result:''
+        result: ''
     },
     unSupportedFileType: {
         code: '10202',
         message: '不支持的文件类型',
-        result:''
+        result: ''
     },
     goodsParamsError: {
         code: '10203',
         message: '商品参数格式错误',
-        result:''
+        result: ''
     },
     publishGoodsError: {
         code: '10204',
         message: '商品发布失败',
-        result:''  
+        result: ''
     },
     invalidGoodsId: {
         code: '10205',
         message: '无效的商品id',
-        result:''  
+        result: ''
     },
     updateGoodsError: {
         code: '10206',
         message: '更新商品失败',
-        result:''  
+        result: ''
     },
-    
+    cartFormatError: {
+        code: '10301',
+        message: '购物车数据格式错误',
+        result: ''
+    },
+    addressFormatError: {
+        code: '10401',
+        message: '地址数据格式错误',
+        result: ''
+    },
+    orderFormatError: {
+        code: '10401',
+        message: '数据格式错误',
+        result: ''
+    }
+
 }

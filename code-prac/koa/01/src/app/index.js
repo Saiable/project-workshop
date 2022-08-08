@@ -20,7 +20,8 @@ app
             // 使用node的path模块，写成绝对路径
             uploadDir: path.join(__dirname, '../upload'), 
             keepExtensions: true
-        }
+        },
+        parsedMethods: ['POST', 'PUT', 'PATCH', 'DELETE'] // 让其支持DELETE方法下，也写入body参数
     }))
     .use(KoaStatic(path.join(__dirname, '../upload')))
     .use(parameter(app)) // 在app原型对象上注册校验的方法
