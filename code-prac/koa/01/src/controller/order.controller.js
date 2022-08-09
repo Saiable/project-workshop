@@ -1,4 +1,5 @@
-const { createOrder } = require('../service/order.service')
+const Order = require('../model/order.model')
+const { createOrder, findAllOrder, updateOrder } = require('../service/order.service')
 
 class OrderController {
     async create(ctx, next) {
@@ -17,6 +18,28 @@ class OrderController {
         ctx.body = {
             code: 0,
             message: '生成订单成功',
+            result: res
+        }
+    }
+
+    async findAll(ctx, next) {
+        const {pageNum = 1,pageSize = 10, status = 0} = ctx.request.query
+        const res = await findAllOrder(pageNum, pageSize, status)
+        ctx.body = {
+            code: '',
+            message: '获取订单列表成功',
+            result: res
+        }
+    }
+
+    async update(ctx, next) {
+        const id = ctx.request.params.id
+        const {status} = ctx.request.body
+        const res = await updateOrder(id, status)
+
+        ctx.body = {
+            code: 0,
+            message: '更新订单状态成功',
             result: res
         }
     }
