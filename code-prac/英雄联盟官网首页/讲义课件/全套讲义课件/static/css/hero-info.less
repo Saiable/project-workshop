@@ -1,0 +1,124 @@
+.hero-info-head {
+    width: 100%;
+
+    .tab {
+        li {
+            position: relative;
+            padding-left: 28px;
+            line-height: 35px;
+            cursor: pointer;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 20px;
+                height: 19px;
+                .sp-index;
+                background-position: -406px -316px;
+            }
+
+            &.active,
+            &:hover {
+                color: #1da6ba;
+                font-weight: 700;
+
+                &:after {
+                    background-position: -431px -316px;
+                    animation: heroInfoActiveMove .3s linear forwards;
+                }
+
+                @keyframes heroInfoActiveMove {
+                    0% {
+                        transform: scale(0);
+                    }
+
+                    1000% {
+                        transform: scale(1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.hero-info-con {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: 448px;
+    overflow: hidden;
+
+    .wrapper {
+        li {
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 12px;
+            width: 90px;
+
+            &:nth-child(12n+12) {
+                margin-right: 0;
+            }
+
+            a {
+                display: block;
+            }
+
+            .pic-box {
+                position: relative;
+                margin: 0 auto;
+                width: 66px;
+                height: 66px;
+                background: darken(#E3E2E2, 5%);
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .icon {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, .6);
+
+                    &:after {
+                        content: '';
+                        .center;
+                        width: 22px;
+                        height: 21px;
+                        .sp-index;
+                        background-position: -401px -226px;
+                    }
+
+                    opacity: 0;
+                    transition: opacity .3s;
+                }
+            }
+
+            p {
+                padding: 0 5px;
+                line-height: 34px;
+                text-align: center;
+                color: #333;
+                font-size: 12px;
+            }
+
+            &:hover {
+                .pic-box {
+                    .icon {
+                        opacity: 1;
+                    }
+                }
+
+                p {
+                    color: #1da6ba;
+                }
+            }
+        }
+    }
+}

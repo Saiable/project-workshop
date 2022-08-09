@@ -1,0 +1,162 @@
+.match-core-head {
+    width: 100%;
+}
+
+.match-core {
+    margin-top: 40px;
+    width: 100%;
+
+    .head {
+        .title {
+            font-size: 18px;
+            font-weight: 700;
+            border-left: none;
+        }
+
+        .tab {
+            margin-left: 350px;
+
+            li {
+                margin-right: 0;
+                width: 50%;
+
+                &.active {
+                    &:after {
+                        background: url('../images/tab-title-selected-big.png') no-repeat center bottom;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        height: 70px;
+        margin-top: 30px;
+        background-color: #FFF;
+        overflow: hidden;
+
+        .tr {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 35px;
+            overflow: hidden;
+
+            &:not(:nth-child(1)) {
+                border-top: 1px solid rgba(204, 204, 204, 0.4);
+
+                // 除了第一行，鼠标滑过的背景颜色
+                &:hover {
+                    background-color: rgba(249, 62, 80, 0.12);
+                }
+            }
+
+            &:nth-child(1) {
+                .td {
+                    font-size: 14px;
+                }
+            }
+
+            .td {
+                position: relative;
+                width: 5%;
+                text-align: center;
+                line-height: 34px;
+                color: #2e303f;
+                font-size: 12px;
+
+                img {
+                    display: inline-block;
+                    height: 90%;
+                    vertical-align: middle;
+                }
+
+                a {
+                    display: block;
+                    height: 100%;
+
+                    &:hover {
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: 4px;
+                            right: 6px;
+                            width: 10px;
+                            height: 10px;
+                            border-radius: 2px;
+                            background: url('../images/sanjiao.png') no-repeat center center #f53228;
+                            background-size: 70% 70%;
+                        }
+                    }
+                }
+
+                &:not(:nth-child(1)) {
+                    &:before {
+                        content: '';
+                        .center-y;
+                        left: -1px;
+                        width: 1px;
+                        height: 12px;
+                        background-color: rgba(204, 204, 204, 0.4);
+                    }
+                }
+
+                &:nth-last-child(1),
+                &:nth-last-child(2) {
+                    font-weight: 700;
+                }
+
+                &.win {
+                    color: #f53228;
+
+                    a {
+                        color: #f53228;
+                    }
+                }
+
+                &.tran {
+                    color: #5c9a68;
+
+                    a {
+                        color: #5c9a68;
+                    }
+                }
+
+                &.draw {
+                    color: #ff7f39;
+
+                    a {
+                        color: #ff7f39;
+                    }
+                }
+            }
+        }
+    }
+
+    .arrow-fold {
+        display: block;
+        margin: 0 auto;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #676767;
+        font-size: 14px;
+        font-weight: 700;
+
+        i {
+            display: inline-block;
+            margin-left: 5px;
+            width: 15px;
+            height: 15px;
+            background: url('../images/jiantou-up.png') no-repeat center center;
+            background-size: 100% 100%;
+            vertical-align: middle;
+            transform: rotate(180deg);
+
+            &.up {
+                transform: rotate(0deg);
+            }
+        }
+    }
+}

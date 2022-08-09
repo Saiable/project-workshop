@@ -1,0 +1,22 @@
+{
+  "name": "webpack_build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.18.0",
+    "webpack-cli": "^4.4.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "iscroll": "^5.2.0",
+    "lodash": "^4.17.20",
+    "qs": "^6.9.6"
+  }
+}
