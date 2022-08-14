@@ -6,10 +6,43 @@
     background-image: url('../images/top_banner.jpeg');
     background-size: cover;
     overflow: hidden;
-    .comm-head {
-        
+    .common-head,
+    .common-head-mask {
+        height: 78px;
+    }
+    .common-head-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        background: url('../images//dark-jianbian-repeatx-0.png') repeat-x;
+        background-size: 1px 100%;
+    }
+    .common-head {
+        position: relative;
+        z-index: 11;
+        .head-logo,
+        .head-nav,
+        .head-search,
+        .head-weixin,
+        .head-person {
+            float: left;
+            padding-top: 10px;
+        }
+        .head-search,
+        .head-weixin,
+        .head-person {
+            float: right;
+        }
+        // LOGO
         .head-logo {
-            
+            width: 167px;
+            height: 60px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }
