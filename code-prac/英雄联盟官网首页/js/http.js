@@ -1,7 +1,7 @@
 const http = axios.create({
     // 统一请求前缀
     baseURL: 'http://127.0.0.1:8888',
-    // 是否允许跨域时候携带资源凭证
+    // 是否允许跨域时候携带资源凭证  
     withCredentials: false,
     // 请求成功的状态码校验规则
     validateStatus: status => {

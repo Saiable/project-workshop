@@ -1,0 +1,159 @@
+.head-box {
+    position: relative;
+    height: 360px;
+    background: url('../images/top_banner.jpeg') no-repeat;
+    background-size: cover;
+    overflow: hidden;
+
+    /* 顶部遮着层 */
+    .comm-head-mark,
+    .comm-head {
+        height: 78px;
+    }
+
+    .comm-head-mark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        background: url('../images/dark-jianbian-repeatx-0.png') repeat-x;
+        background-size: 1px 100%;
+    }
+
+    /* 顶部 */
+    .comm-head {
+        position: relative;
+        z-index: 11;
+
+        .head-logo,
+        .head-nav,
+        .head-search,
+        .head-weixin,
+        .head-person {
+            padding-top: 10px;
+            float: left;
+        }
+
+        .head-search,
+        .head-weixin,
+        .head-person {
+            float: right;
+            display: none;
+        }
+
+        // LOGO
+        .head-logo {
+            width: 167px;
+            height: 60px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // NAV
+        .head-nav {
+            padding-top: 15px;
+            margin-left: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: flex-start;
+
+            .item {
+                width: 140px;
+                height: 100%;
+
+                .nav-title,
+                .nav-subtitle {
+                    display: block;
+                    color: #FFF;
+                    text-align: center;
+                    letter-spacing: 1px;
+                }
+
+                .nav-title {
+                    font-size: 18px;
+                    line-height: 28px;
+                }
+
+                .nav-subtitle {
+                    color: #AEAEAE;
+                    font-size: 11px;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+
+    /* 导航详情 */
+    .nav-detail {
+        /* transform: translateY(-10px);
+        transition: transform .2s; */
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .7);
+
+        .detail-con {
+            padding-left: 187px;
+            padding-top: 78px;
+            display: flex;
+            justify-content: flex-start;
+
+            li {
+                width: 140px;
+
+                a {
+                    display: block;
+                    line-height: 30px;
+                    text-align: center;
+                    color: #FFF;
+                    font-size: 14px;
+
+                    // a:hover{}
+                    &:hover {
+                        color: #E9C06C;
+                    }
+
+                    i {
+                        display: inline-block;
+                        width: 14px;
+                        height: 14px;
+                        vertical-align: middle;
+
+                        &.icon-hot {
+                            background-position: -347px -84px;
+                        }
+
+                        &.icon-new {
+                            background-position: -381px -65px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* 底部按钮 */
+    .author-box,
+    .background-btn {
+        display: none;
+    }
+
+    /* 头部动画 */
+    @keyframes headMove {
+        0% {
+            transform: translateY(-10px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+}

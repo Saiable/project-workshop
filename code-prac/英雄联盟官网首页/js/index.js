@@ -1,5 +1,5 @@
 import './head_box.js';
-
+import './swiper_container_home.js'
 //编写一些公共的逻辑
 let commMoreArrowList = Array.from(document.querySelectorAll('.comm-more-arrow'))
 commMoreArrowList.forEach(item => {
