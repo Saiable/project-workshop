@@ -1,0 +1,14 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pm2": "^5.2.0"
+  },
+  "port": 8088
+}
