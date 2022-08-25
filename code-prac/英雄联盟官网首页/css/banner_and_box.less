@@ -82,7 +82,7 @@
         letter-spacing: 1px;
         text-align: left;
 
-        &:hover span{
+        &:hover span {
           display: inline-block;
           height: 40px;
           font-weight: bold;
@@ -92,59 +92,71 @@
       }
     }
 
-    .title-header {
-      height: 59px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #1DA6BA;
-      line-height: 59px;
-      letter-spacing: 1px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    ul.news-title {
-
-      li {
-        height: 39px;
-        border-top: 1px solid #d9d8d8;
-        display: flex;
-        justify-content: space-between;
-        vertical-align: center;
-        line-height: 39px;
-        font-size: 14px;
-        letter-spacing: 1px;
-
-        color: #424242;
-
-        .item-category {
-          width: 45px;
-
-          span {
-            padding: 2px 5px;
-            border: 0.5px solid #1DA6BA;
-            font-size: 12px;
-            color: #1DA6BA;
-          }
-
-        }
-
-        .item-tite {
-          width: 370px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-
-          &:hover {
-            color: #1DA6BA;
-            cursor: pointer;
-          }
-        }
-
-        .item-time {
-          color: #9d9d9d;
-        }
+    .news-title {
+      position: absolute;
+      top: 35px;
+      width: 490px;
+      ul {
+        display: none;
       }
+      ul.active {
+        display: block;
+        li.title-header a {
+          display: block;
+          height: 59px;
+          font-size: 22px;
+          font-weight: bold;
+          color: #1DA6BA;
+          line-height: 59px;
+          letter-spacing: 1px;
+          text-align: center;
+          vertical-align: middle;
+        }
+
+        li.title {
+          height: 39px;
+          border-top: 1px solid #d9d8d8;
+          display: flex;
+          justify-content: space-between;
+          vertical-align: center;
+          line-height: 39px;
+          font-size: 14px;
+          letter-spacing: 1px;
+
+          color: #424242;
+
+          .item-category {
+            width: 45px;
+
+            span {
+              padding: 2px 5px;
+              border: 0.5px solid #1DA6BA;
+              font-size: 12px;
+              color: #1DA6BA;
+            }
+
+          }
+
+          .item-tite {
+            width: 370px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #424242;
+
+            &:hover {
+              color: #1DA6BA;
+              cursor: pointer;
+            }
+          }
+
+          .item-time {
+            color: #9d9d9d;
+          }
+        }
+
+      }
+
 
     }
 
