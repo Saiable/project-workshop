@@ -82,12 +82,13 @@
         letter-spacing: 1px;
         text-align: left;
 
-        &:hover span {
+        span.active {
           display: inline-block;
           height: 40px;
           font-weight: bold;
           color: #1da6ba;
           background: url('../images/tab-title-selected.png') no-repeat bottom;
+          cursor: pointer
         }
       }
     }
@@ -96,14 +97,18 @@
       position: absolute;
       top: 35px;
       width: 490px;
+
       ul {
         display: none;
       }
+
       ul.active {
         display: block;
+
         li.title-header a {
           display: block;
           height: 59px;
+          padding: 0 21px;
           font-size: 22px;
           font-weight: bold;
           color: #1DA6BA;
@@ -111,6 +116,9 @@
           letter-spacing: 1px;
           text-align: center;
           vertical-align: middle;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
 
         li.title {
@@ -135,7 +143,13 @@
               color: #1DA6BA;
             }
 
+            span.video {
+              border: 0.5px solid #bb9a6c;
+              color: #bb9a6c;
+            }
           }
+
+
 
           .item-tite {
             width: 370px;

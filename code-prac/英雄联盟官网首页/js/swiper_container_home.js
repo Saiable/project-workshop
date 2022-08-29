@@ -54,11 +54,11 @@ const autoMove = function autoMove() {
     // 浏览器的4个样式是一起渲染的，导致后面的会覆盖掉前面的样式
     
     //每次切换完，实现分页器对齐
-    pagenationAlign()
+    pagenationAlign(step)
 }
 
 // 实现分页器对齐
-const pagenationAlign = function pagenationAlign () {
+const pagenationAlign = function pagenationAlign (step) {
     let temp = step
     temp === count-1 ? temp = 0 : null
     pagenationList.forEach((item, index) => {
@@ -81,7 +81,7 @@ const pagenationHandle = function pagenationHandle () {
     // 使用事件委派，委托给父元素swiper-pagenation
     // 事件代理的性能，比直接循环列表绑定事件，高了40%~60%
     pagenation.addEventListener('mouseover', function (ev) {
-        let target = ev.target,
+        let target = ev.target, 
             index = +target.getAttribute('index') // 拿到的是字符串，在一个值前面加加号，就会将其转为数字
             
         if(target.tagName === 'LI') {
@@ -97,6 +97,7 @@ const pagenationHandle = function pagenationHandle () {
     })
 }
 
+
 http.get('/home_banner').then(data => {
     binding(data)
     // 一些额外的处理
@@ -106,10 +107,10 @@ http.get('/home_banner').then(data => {
     wrapper.style.width = `${count*slideWidth}px`
     wrapper.style.left = `${-step*slideWidth}px` // 控制绝对定位的left值，为负值
     pagenationList = Array.from(pagenation.querySelectorAll('li')) // dom操作获取的是类数组，要转为数组
-    console.log(pagenationList)
+
     // 开启轮播
     autoTimer = setInterval(autoMove, interval)
-    // 控制自动轮播
+    // 控制轮播
     swiperContainerHome.addEventListener('mouseenter', () => clearInterval(autoTimer))
     swiperContainerHome.addEventListener('mouseleave', () => autoTimer = setInterval(autoMove, interval))
 
