@@ -19,5 +19,4 @@ function initArrow() {
             // item.classList.remove('move');
         })
     })
-
 }
