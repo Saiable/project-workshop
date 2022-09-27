@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.bg1 {
+    background-image: url('https://up.tt98.com/edpic/ae/ba/bd/aebabd3dd7b91f396cfceb9d5a59a5f7.jpg');
+}
+
+.bg2 {
+    background-image: url('https://up.tt98.com/edpic/34/02/ab/3402ab8b1e4c4edc72b98d07b06146cc.jpg');
+}
+
+.bg3 {
+    background-image: url('https://up.tt98.com/edpic/f0/95/f8/f095f88c0be6f1c8ba1301d1dfec0882.jpg');
+}
+
+.bg4 {
+    background-image: url('https://up.tt98.com/edpic/d3/8e/02/d38e02b3c58b9f751e28289cf02199e8.jpg');
+}
+
+.bg5 {
+    background-image: url('https://up.tt98.com/edpic/f6/0a/01/f60a01c438f4c12fd7022af5c2e71d51.jpg');
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 90vw;
+}
+
+.panel {
+    height: 80vh;
+    border-radius: 50px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+    cursor: pointer;
+    flex: 1;
+    margin: 10px;
+    position: relative;
+    transition: flex 0.6s ease-in;
+
+}
+
+.panel h3 {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    margin: 0;
+
+    font-size: 24px;
+    opacity: 0;
+
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+.panel.active {
+    flex: 4;
+}
+
+@media (max-width: 720px) {
+    .container {
+        width: 100vw;
+    }
+
+    .panel:nth-child(5) {
+        display: none;
+    }
+}
