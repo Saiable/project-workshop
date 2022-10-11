@@ -38,5 +38,8 @@ button.calc {
 }
 
 div.value {
+    width: 290px;
+    height: 200px;
     margin-top: 10px;
+
 }

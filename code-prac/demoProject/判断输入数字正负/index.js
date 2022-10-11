@@ -5,17 +5,29 @@ const myinput = document.querySelector('.myinput'),
 
 // const inputValue = Number(myinput.value)
 
+const validateNumber = function validateNumber() {
+        const inputValue = myinput.value
+        if(inputValue === '') {
+            res.innerHTML = '请输入'
+            return
+        }
+    
+        const numberValue = Number(inputValue)
 
-btn.addEventListener('click', function (){
-    const inputValue = myinput.value
-    console.log(inputValue)
+        if(!isNaN(numberValue)) {
+            if(numberValue === 0) {
+                    res.innerHTML = `输入为：${inputValue}`
+            } else {
+                res.innerHTML = numberValue > 0 ? `结果为：${numberValue}，正数` : `结果为：${numberValue}，负数`
+            }
+        } else {
+            res.innerHTML = `输入为：${inputValue}，请输入有效数字`
+        }
+}
+btn.addEventListener('click', validateNumber)
 
-    if(inputValue === '') {
-        res.innerHTML = '结果为：请输入'
-    }
-    if(typeof inputValue !== 'number') {
-        console.log('非数字，请重新输入')
-    } else {
-        console.log(inputValue)
+myinput.addEventListener('keydown', function(event) {
+    if(event.keyCode === 13) {
+        validateNumber()
     }
 })
