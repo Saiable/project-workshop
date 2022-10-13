@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+ul.container {
+    width: 500px;
+    height: 300px;
+    border: 1px solid skyblue;
+}
+
+li.item {
+    width: 100%;
+    height: 50px;
+    list-style: none;
+    border-bottom: 1px dashed grey;
+    line-height: 50px;
+}
+
+li.item:first-child {
+    margin-top: 10px;
+}
+
+li.item:last-child {
+    border-bottom: none;
+}
+
+/* 真实项目css实现更方便一点，为了练习使用js实现 */
+/* li.item:nth-child(2n) {
+    background-color: rgb(100, 100, 100);
+}
+
+li.item:hover {
+    background-color: rgb(56, 63, 70);
+} */
