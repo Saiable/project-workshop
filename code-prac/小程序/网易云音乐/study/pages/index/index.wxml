@@ -1,0 +1,9 @@
+<!--pages/index/index.wxml-->
+<view class="indexContainer">
+  <image wx:if="{{userInfo.avatarUrl}}" class="avatarUrl" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+  <button wx:else type="primary" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">点击授权</button>
+  <text wx:if="{{userInfo.avatarUrl}}" class="userName">{{userInfo.nickName}}</text>
+  <view class="goStudy" bindtap="handleTap">
+    <text>Hello World</text>
+  </view>
+</view>
