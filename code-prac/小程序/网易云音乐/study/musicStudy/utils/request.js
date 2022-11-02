@@ -4,8 +4,11 @@ export default (url, data = {}, method = 'GET') => {
         wx.request({
             url: config.host + url,
             data,
+            header: {
+                cookie: wx.getStorageSync('cookie')
+            },
             success: (res) => {
-                console.log('请求成功', res)
+                // console.log('请求成功', res)
                 resolve(res.data)
             },
             fail: (err) => {
