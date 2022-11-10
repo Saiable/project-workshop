@@ -1,0 +1,58 @@
+/* pages/search/search.wxss */
+.searchContainer {
+    padding: 0 20rpx;
+}
+.header {
+    display: flex;
+    height: 60rpx;
+    padding: 10rpx 0;
+    line-height: 60rpx;
+}
+.header__searchInput {
+    flex: 1; /*右侧固定长度，左侧自适应*/
+    background-color: rgba(237,237,237,.3);
+    border-radius: 30rpx;
+}
+.header__searchInput__icon {
+    position: absolute;
+    left: 15rpx;
+}
+.header__searchInput__input {
+    margin-left: 50rpx;
+    height: 60rpx;
+}
+.placeholder {
+    /* color:  #d43c33; */
+    font-size: 28rpx;
+}
+.header__cancel {
+    width: 100rpx;
+    text-align: center;
+}
+
+/* 热搜榜 */
+.hotContainer__title {
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 1px solid #eee;
+    font-size: 28rpx;
+}
+
+.hotContainer__hotList {
+    display: flex;
+    flex-wrap: wrap;
+}
+.hotContainer__hotList__hotItem {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 26rpx;
+}
+.hotContainer__hotList__hotItem__order {
+    margin: 0 10rpx;
+}
+.hotContainer__hotList__hotItem__iconImage {
+    width: 30rpx;
+    height: 25rpx;
+    margin-left: 10rpx;
+}

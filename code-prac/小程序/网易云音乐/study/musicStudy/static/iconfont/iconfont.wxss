@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3708246 */
-  src: url('//at.alicdn.com/t/c/font_3708246_8j9p9yfqghh.woff2?t=1667388889792') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3708246_8j9p9yfqghh.woff?t=1667388889792') format('woff'),
-       url('//at.alicdn.com/t/c/font_3708246_8j9p9yfqghh.ttf?t=1667388889792') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3708246_i62u2c345zi.woff2?t=1668088011102') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3708246_i62u2c345zi.woff?t=1668088011102') format('woff'),
+       url('//at.alicdn.com/t/c/font_3708246_i62u2c345zi.ttf?t=1668088011102') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,54 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-search:before {
+  content: "\e741";
+}
+
+.icon-bofang:before {
+  content: "\e633";
+}
+
+.icon-bofang1:before {
+  content: "\e634";
+}
+
+.icon-24gl-volumeDisable:before {
+  content: "\ea0c";
+}
+
+.icon-24gl-volumeMiddle:before {
+  content: "\ea0d";
+}
+
+.icon-24gl-nextFrame:before {
+  content: "\ea6b";
+}
+
+.icon-24gl-playCircle:before {
+  content: "\ea6e";
+}
+
+.icon-24gl-playlistMusic3:before {
+  content: "\ea72";
+}
+
+.icon-24gl-previousFrame:before {
+  content: "\ea73";
+}
+
+.icon-24gl-shuffle:before {
+  content: "\ea75";
+}
+
+.icon-24gl-repeat2:before {
+  content: "\ea76";
+}
+
+.icon-24gl-repeatOnce2:before {
+  content: "\ea77";
 }
 
 .icon-gengduo-shuxiang:before {

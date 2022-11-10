@@ -62,11 +62,12 @@ Page({
           key: 'userinfo',
           data: JSON.stringify(res.profile)
         })
-        // let cookie = res.cookie.split(';;').find(item => item.indexOf('MUSIC_U') !== -1)
-        // console.log(cookie)
+        let cookie = res.cookie.split(';;').find(item => item.indexOf('MUSIC_U') !== -1)
+        console.log(cookie)
         wx.setStorage({
           key: 'cookie',
-          data: res.cookie
+          // data: res.cookie,
+          data: cookie,
         })
         // 跳转到个人中心
         wx.reLaunch({ // perosnal获取本地数据放在了onload里，用reLauch方法保证onload回调会重新执行，当然也可以不把读取用户数据的方法放在onLoad里，放在onShow里面（性能不太好，每次页面显示都会执行）

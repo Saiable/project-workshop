@@ -8,16 +8,42 @@
     </view>
 
     <!-- 导航区域 -->
-    <scroll-view scroll-x="true" class="navScroll" enable-flex>
-        <view class="navItem" wx:for="{{videoGroupList}}" wx:key="id">
+    <scroll-view scroll-x="true" class="navScroll" enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation>
+        <view class="navItem" wx:for="{{videoGroupList}}" wx:key="id"  id="{{'scroll'+item.id}}">
             <view class="navContent {{navId === item.id ? 'active' : ''}}" bindtap="changeNav" id="{{item.id}}">{{item.name}}</view>
         </view>
     </scroll-view>
     
     <!-- 视频列表区域 -->
-    <scroll-view class="videoScroll" scroll-x="false" scroll-y="true">
+    <scroll-view 
+        class="videoScroll" 
+        scroll-y="true"
+        refresher-enabled
+        bindrefresherrefresh="handleRefresher"
+        refresher-triggered="{{isTrigger}}"
+        bindscrolltolower="handleToLower"
+    >
         <view class="videoItem" wx:for="{{videoList}}" wx:key="id">
-            <video src="{{item.dealedUrl}}"></video>
+            <video 
+                src="{{item.dealedUrl}}" 
+                bindplay="handlePlay" 
+                id="{{item.data.vid}}" 
+                poster="{{item.data.coverUrl}}" 
+                class="common"
+                wx:if="{{videoId === item.data.vid}}"
+                bindtimeupdate="handleTimeUpdate"
+                bindended="handleEnded"
+            ></video>
+            <!-- 性能优化，使用image图片代替video标签 -->
+            <image 
+                class="common" 
+                src="{{item.data.coverUrl}}" 
+                mode="aspectFit" 
+                bindtap="handlePlay" 
+                id="{{item.data.vid}}"
+                wx:else
+            />
+              
             <view class="content">{{item.data.title}}</view>
             <!-- 视频项的头像、点赞、评论区域 -->
             <view class="footer">

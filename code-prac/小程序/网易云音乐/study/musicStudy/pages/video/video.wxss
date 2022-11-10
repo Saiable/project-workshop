@@ -2,6 +2,7 @@
 .videoContainer .header {
     display: flex;
     padding: 10rpx;
+    height: 60rpx;
 }
 .videoContainer .header image {
     width: 60rpx;
@@ -23,7 +24,7 @@
     box-sizing: border-box;
     display: flex;
     height: 60rpx;
-    margin-bottom: 20rpx;
+    /* margin-bottom: 20rpx; */
     white-space: nowrap;
 }
 
@@ -42,19 +43,32 @@
 }
 
 /* 视频列表 */
+.videoScroll {
+    margin-top: 20rpx; /* 移除掉导航的margin-bottom样式*/
+    /* scroll-view需要指定height才会生效，动态计算：视口高度 - 头部 - 导航 - 边距 ，计算完还要在外面滑动一下，外面不能有滚动条*/
+    /* height: calc(100vh - 60rpx - 60rpx - 40rpx);  */
+    height: calc(100vh - 160rpx); 
+    /* 测试页面的上拉触底 */
+    /* height: calc(100vh - 100rpx);  */
+}
 .videoItem {
     padding: 0 3%;
     margin-bottom: 40rpx;
-
 }
 
-.videoItem video {
+/* .videoItem video {
+
+} */
+
+.videoItem .common {
     width: 100%;
     height: 360rpx;
     border-radius: 10rpx;
 }
+.videoItem image.common {
+    background-color: #000000;
 
-
+}
 .videoItem .content {
     font-size: 26rpx;
     height:80rpx;

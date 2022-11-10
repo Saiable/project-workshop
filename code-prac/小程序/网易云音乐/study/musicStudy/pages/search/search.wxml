@@ -1,0 +1,35 @@
+<!--pages/search/search.wxml-->
+<view class="searchContainer">
+    <!-- 头部搜索区域 -->
+    <view class="header">
+        <view class="header__searchInput">
+            <text class="iconfont icon-search header__searchInput__icon"></text>
+            <input type="text" placeholder="{{placeholderContent}}" class="header__searchInput__input" placeholder-class="placeholder" bindinput="handleInputChange" />
+        </view>
+        <text class="header__cancel">取消</text>
+    </view>
+
+    <!-- 搜索内容展示 -->
+    <view class="showSearchContent">
+        <view class="showSearchContent__content">搜索内容：{{searchContent}}</view>
+        <view class="showSearchContent__list">
+            <view class="showSearchContent__list__item" wx:for="{{searchList}}" wx:key="id">
+                <text class="iconfont icon-search"></text>
+                <text class="">{{item.name}}</text>
+                  
+            </view>
+        </view>
+    </view>
+    <!-- 热搜榜 -->
+    <view class="hotContainer">
+        <view class="hotContainer__title">热搜榜</view>
+        <!-- 热搜列表 -->
+        <view class="hotContainer__hotList">
+            <view class="hotContainer__hotList__hotItem" wx:for="{{hotList}}" wx:key="searchWord">
+                <text class="hotContainer__hotList__hotItem__order">{{index + 1}}</text>
+                <text class="hotContainer__hotList__hotItem__text">{{item.searchWord}}</text>
+                <image class="hotContainer__hotList__hotItem__iconImage" wx:if="{{item.iconUrl}}" src="{{item.iconUrl}}"></image>
+            </view>
+        </view>
+    </view>
+</view>
