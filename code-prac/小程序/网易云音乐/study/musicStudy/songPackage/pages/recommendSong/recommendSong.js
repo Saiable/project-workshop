@@ -1,5 +1,5 @@
 // pages/recommendSong.js
-import request from '../../utils/request.js'
+import request from '../../../utils/request.js'
 import PubSub from 'pubsub-js'
 Page({
 
@@ -79,7 +79,7 @@ Page({
     })
     // 路由跳转传参，支持query参数
     wx.navigateTo({
-      url: `/pages/songDetail/songDetail?musicId=${song.id}`
+      url: `/songPackage/pages/songDetail/songDetail?musicId=${song.id}`
     })
   },
   /**

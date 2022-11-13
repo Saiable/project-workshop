@@ -88,6 +88,11 @@ Page({
       })
     }
   },
+  toSearch() {
+    wx.navigateTo({
+      url: '/pages/search/search'
+    })
+  },
   // 播放视频的回调
   handlePlay(event) {
     // console.log('play')

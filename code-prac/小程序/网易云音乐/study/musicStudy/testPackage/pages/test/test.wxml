@@ -1,0 +1,11 @@
+<!--test/test.wxml-->
+<import src="/template/template01/template01.wxml" />
+<view class="testContainer">
+    <view>测试使用模板</view>
+    <!-- 测试模板-->
+    <template is="myTmp" data="{{...userInfo}}"></template>
+
+    <!-- 测试获取用户唯一标识openId -->
+    <view>测试获取用户唯一标识openId</view>
+    <button bindtap="handleGetOpenId">获取openId</button>
+</view>

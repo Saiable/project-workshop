@@ -12,6 +12,7 @@ Page({
     searchContent: '', // 用户输入的表单项数据
     searchList: [], // 模糊匹配的数据
     // isSend: 'false', // 是否发送请求
+    historyList: [], // 搜索历史记录
   },
 
   /**
@@ -19,9 +20,11 @@ Page({
    */
   onLoad(options) {
     this.getInitData()
+    this.getSearchHistory()
   },
   // 获取初始化数据
   async getInitData() {
+
     let placeHolderData = await request('/search/default')
     let hostListData = await request('/search/hot/detail')
     this.setData({
@@ -29,11 +32,49 @@ Page({
       hotList: hostListData.data
     })
   }, 
+  // 获取本地搜索记录
+  getSearchHistory() {
+    let historyList = wx.getStorageSync('searchHistory')
+    if(historyList) {
+      this.setData({
+        historyList
+      })
+    }
+  },
+  // 清空搜索内容
+  clearSearchContent() {
+    this.setData({
+      searchContent: '',
+      searchList: []
+    })
+  },
+  // 清空历史记录
+  deleteHistory() {
+    wx.showModal({
+      // title: '清空',
+      content: '确定清空全部历史记录？',
+      success: (res) => {
+        if(res.confirm) {
+          // 清空data中的historyList
+          this.setData({
+            historyList: []
+          })
+          // 移除本地缓存
+          wx.removeStorageSync('searchHistory')
+        }
+      }
+    })
+  },
   // 表单项内容发生改变的回调
   handleInputChange(event) {
-    console.log(event)
+    // console.log(event)
     // 更新searchContent的状态
-    if(event.detail.value == '') return
+    if(!event.detail.value) {
+      this.setData({
+        searchList: []  // 置空配合wx:if
+      })
+      return
+    }
     this.setData({
       searchContent: event.detail.value.trim()
     })
@@ -47,12 +88,24 @@ Page({
 
   },
   async getSearchList() {
+    let {searchContent, historyList} = this.data
     // 发请求获取关键字模糊匹配数据
-    let searchListData = await request('/search', {keywords: this.data.searchContent, limit: 10})
+    let searchListData = await request('/search', {keywords: searchContent, limit: 10})
     // console.log(searchListData)
     this.setData({
       searchList: searchListData.result.songs
     })
+    // 添加搜索记录
+    if(historyList.indexOf(searchContent) !== -1) {
+      historyList.splice(historyList.indexOf(searchContent), 1)
+    }
+    historyList.unshift(searchContent)
+
+    this.setData({
+      historyList
+    })
+    // 搜索记录需要存到本地
+    wx.setStorageSync('searchHistory', historyList)
   },
   // 
   /**

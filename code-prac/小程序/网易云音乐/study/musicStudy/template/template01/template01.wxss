@@ -1,0 +1,4 @@
+/* template/template01/template01.wxss */
+.title {
+    color: red;
+}
