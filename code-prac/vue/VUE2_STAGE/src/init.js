@@ -6,15 +6,16 @@ export function initMixin(Vue) {
         vm.$options = options
         initState(vm)
 
-        if(options.el) {
-            vm.$mount(options.el)
+        if(options.el) { // 看是否有el配置项
+            vm.$mount(options.el) // 实现数据的挂载
         }
     }
 
     Vue.prototype.$mount = function (el) {
         const vm = this
         el = document.querySelector(el)
-        let ops = vm.options
+        let ops = vm.$options
+
         if(!ops.render) { // 先查找render函数
             let template
             if(!ops.template && el) { // 没有template配置项，但是有el配置项

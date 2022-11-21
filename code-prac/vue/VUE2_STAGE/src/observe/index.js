@@ -29,7 +29,7 @@ export function defineReactive(target, key, value) { // 闭包
     observe(value) // observe内部对value进行判断了，是个对象，会再次创建Observer实例，再次调用walk方法，劫持每个属性
     Object.defineProperty(target, key, {
         get() { // 取值的时候，会执行get
-            console.log('key', key)
+            // console.log('key', key)
             return value
         },
         set(newValue) { // 修改值的时候，会执行set

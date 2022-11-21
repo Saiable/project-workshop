@@ -8,9 +8,16 @@
   <title>Document</title>
 </head>
 <body>
+    <div>
+        <div id="app">
+            {{name}}
+            {{age}}
+        </div>
+    </div>
 <script src="./vue.js"></script>
 <script>
     const vm = new Vue({
+        el: '#app',
         data() {
             return {
                 name: 'sai',
@@ -29,7 +36,6 @@
             }
         }
     })
-    vm.hobby.push('1')
 </script>
 </body>
 </html>

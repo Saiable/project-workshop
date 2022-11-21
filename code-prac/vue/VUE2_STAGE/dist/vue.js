@@ -75,9 +75,8 @@
           // arr.splice(0, 1, {a:1}, {a:1})
           inserted = args.slice(2);
           break;
-      }
+      } // console.log('新增的内容', inserted)
 
-      console.log('新增的内容', inserted);
 
       if (inserted) {
         // 对新增的内容再次进行观测
@@ -136,7 +135,7 @@
     Object.defineProperty(target, key, {
       get: function get() {
         // 取值的时候，会执行get
-        console.log('key', key);
+        // console.log('key', key)
         return value;
       },
       set: function set(newValue) {
@@ -204,14 +203,15 @@
       initState(vm);
 
       if (options.el) {
-        vm.$mount(options.el);
+        // 看是否有el配置项
+        vm.$mount(options.el); // 实现数据的挂载
       }
     };
 
     Vue.prototype.$mount = function (el) {
       var vm = this;
       el = document.querySelector(el);
-      var ops = vm.options;
+      var ops = vm.$options;
 
       if (!ops.render) {
         // 先查找render函数
