@@ -1,5 +1,5 @@
 // rollup 默认可以导出一个对象，作为打包的配置文件
-
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import babel from  '@rollup/plugin-babel'
 export default {
     input: './src/index.js', // 入口
@@ -15,6 +15,7 @@ export default {
         babel({
             exclude: 'node_modules/**', // 排除第三方模块 ，**表示任意文件夹
             babelHelpers: 'bundled' // https://www.npmjs.com/package/@rollup/plugin-babel  搜索babelHelpers，不加这一行会有报错
-        }) // 所有的插件都是函数
+        }), // 所有的插件都是函数
+        nodeResolve()
     ]
 }

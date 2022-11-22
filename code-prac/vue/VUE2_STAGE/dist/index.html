@@ -8,16 +8,19 @@
   <title>Document</title>
 </head>
 <body>
-    <div>
-        <div id="app">
-            {{name}}
-            {{age}}
+    <div id='app'>
+        <div style='color:red' class='container'>
+            {{ name }} hello world 
         </div>
+        <span>
+            {{ age }}
+        </span>
     </div>
 <script src="./vue.js"></script>
 <script>
     const vm = new Vue({
         el: '#app',
+        // template: `<div>hello world</div>`,
         data() {
             return {
                 name: 'sai',
