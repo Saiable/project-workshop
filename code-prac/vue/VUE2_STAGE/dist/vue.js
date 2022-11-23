@@ -201,6 +201,8 @@
   var qnameCapture = "((?:".concat(ncname, "\\:)?").concat(ncname, ")");
   var startTagOpen = new RegExp("^<".concat(qnameCapture)); // 匹配到的分组，是一个标签名
 
+  var endTag = new RegExp("^<\\/".concat(qnameCapture, "[^>]*>")); // 匹配到的分组，是结束标签名
+
   var attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s"'=<>`]+)))?/;
   var startTagClose = /^\s*(\/?)>/;
 
@@ -213,8 +215,7 @@
 
     function parseStartTag() {
       var start = html.match(startTagOpen); // 结果是一个数组
-
-      console.log(start);
+      // console.log(start)
 
       if (start) {
         // 匹配到了，把结果（数组）组成一个对象
@@ -252,36 +253,48 @@
     }
 
     while (html) {
-      // vue2中，html最开始一定是一个< 
+      debugger; // vue2中，html最开始一定是一个< 
       // 如果textEnd为0，说明是一个开始标签或者结束标签
       // 如果textEnd>0，说明就是文本的结束位置
+
       var textEnd = html.indexOf('<'); // 如果索引为0，则说明是个标签，开始标签取完了，再去取尖角号，取到的是文本结束的位置
 
       if (textEnd == 0) {
         var startTagMatch = parseStartTag(); // 开始标签的匹配结果
 
         if (startTagMatch) {
-          // continue
-          console.log(html); // 截取完之后，可能还是开始标签
-        }
+          // 解析到的开始标签
+          continue;
+        } //如果不是开始标签，那么就是结束标签
 
-        break;
+
+        var endTagMatch = html.match(endTag);
+
+        if (endTagMatch) {
+          advance(endTagMatch[0].length);
+          continue;
+        }
       }
 
       if (textEnd >= 0) {
-        html.substring(0, textEnd); // 文本内容
+        // 解析到的文本
+        var text = html.substring(0, textEnd); // 文本内容
 
-        break;
+        if (text) {
+          advance(text.length); // console.log(html)
+        }
       }
     }
+
+    console.log(html);
   } // 对模板进行编译处理
 
 
   function compileToFunction(template) {
-    // 1.将template转化成ast抽象语法树
-    parsetHTML(template); // 2.生成render方法（返回的结果，就是虚拟dom）
+    console.log(template); // 1.将template转化成ast抽象语法树
 
-    console.log(template);
+    parsetHTML(template); // 2.生成render方法（返回的结果，就是虚拟dom）
+    // console.log(template)
   }
 
   function initMixin(Vue) {

@@ -16,7 +16,7 @@ function parsetHTML(html) {// 每解析一个标签，就把它从字符串中�
 
     function parseStartTag() {
         const start = html.match(startTagOpen) // 结果是一个数组
-        console.log(start)
+        // console.log(start)
         if(start) {
             // 匹配到了，把结果（数组）组成一个对象
             const match = {
@@ -49,28 +49,39 @@ function parsetHTML(html) {// 每解析一个标签，就把它从字符串中�
     }
 
     while(html) {
+        debugger
         // vue2中，html最开始一定是一个< 
         // 如果textEnd为0，说明是一个开始标签或者结束标签
         // 如果textEnd>0，说明就是文本的结束位置
         let textEnd = html.indexOf('<') // 如果索引为0，则说明是个标签，开始标签取完了，再去取尖角号，取到的是文本结束的位置
-        if(textEnd == 0) {
+        if(textEnd == 0) { 
             const startTagMatch = parseStartTag() // 开始标签的匹配结果
-            if(startTagMatch) {
-                // continue
+            if(startTagMatch) { // 解析到的开始标签
+                continue
                 console.log(html) // 截取完之后，可能还是开始标签
             }
-            break
+            //如果不是开始标签，那么就是结束标签
+            let endTagMatch = html.match(endTag)
+            if(endTagMatch) {
+                advance(endTagMatch[0].length)
+                continue
+            }
         }
-        if(textEnd >= 0) {
+        if(textEnd >= 0) { // 解析到的文本
             let text = html.substring(0, textEnd) // 文本内容
-            break
+            if(text) {
+                advance(text.length)
+                // console.log(html)
+            }
         }
     }
+    console.log(html)
 }
 // 对模板进行编译处理
 export function compileToFunction(template) {
+    console.log(template)
     // 1.将template转化成ast抽象语法树
     let ast = parsetHTML(template)
     // 2.生成render方法（返回的结果，就是虚拟dom）
-    console.log(template)
+    // console.log(template)
 }
