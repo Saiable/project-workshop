@@ -1,6 +1,6 @@
-// const fs = require('fs')
-// console.log(fs)
+document.querySelector('#btn').addEventListener('click', () => {
+    console.log('btn')
+    const {handleSend} = myApi
+    handleSend('haha')
 
-// fs.writeFile('C:/Users/Administrator/Desktop/example.txt', 'abc', () => {
-//     console.log('done')
-// })
+})

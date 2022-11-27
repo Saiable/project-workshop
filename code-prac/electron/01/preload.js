@@ -4,6 +4,14 @@
 // fs.writeFile('C:/Users/Administrator/Desktop/example.txt', 'abc', () => {
 //     console.log('done')
 // })
-const {contextBridge} = require('electron')
-console.log(contextBridge)
-// contextBridge.exposeInMainWorld('my-api')
+const {contextBridge, ipcRenderer} = require('electron')
+// console.log(contextBridge)
+const handleSend = async (arg) => {
+    let callback = await ipcRenderer.invoke('send-event', arg)
+    console.log(callback)
+}
+contextBridge.exposeInMainWorld('myApi', {
+        platform: process.platform,
+        handleSend
+})
+

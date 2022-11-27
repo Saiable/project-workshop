@@ -208,6 +208,14 @@
 
   function parsetHTML(html) {
     // 每解析一个标签，就把它从字符串中删除掉
+    function start(tag, attrs) {
+      console.log('开始标签', tag, attrs);
+    }
+
+    function end(tag) {
+      console.log('结束标签', tag);
+    }
+
     function advance(n) {
       // 截取
       html = html.substring(n);
@@ -228,9 +236,9 @@
         // console.log(match)
         // console.log(html)
 
-        var attr, end;
+        var attr, _end;
 
-        while (!(end = html.match(startTagClose)) && (attr = html.match(attribute))) {
+        while (!(_end = html.match(startTagClose)) && (attr = html.match(attribute))) {
           // 如果不是开始标签的结束，就一直匹配，并且每次匹配都把匹配到的结果存起来
           advance(attr[0].length); // 每次匹配完，再把匹配过的字符去掉
 
@@ -241,9 +249,9 @@
         } // console.log(match)
 
 
-        if (end) {
+        if (_end) {
           // 如果匹配到了end，也应该删除
-          advance(end[0].length);
+          advance(_end[0].length);
         }
 
         return match;
@@ -253,10 +261,10 @@
     }
 
     while (html) {
-      debugger; // vue2中，html最开始一定是一个< 
+      // debugger
+      // vue2中，html最开始一定是一个< 
       // 如果textEnd为0，说明是一个开始标签或者结束标签
       // 如果textEnd>0，说明就是文本的结束位置
-
       var textEnd = html.indexOf('<'); // 如果索引为0，则说明是个标签，开始标签取完了，再去取尖角号，取到的是文本结束的位置
 
       if (textEnd == 0) {
@@ -264,7 +272,9 @@
 
         if (startTagMatch) {
           // 解析到的开始标签
-          continue;
+          start(startTagMatch.tagName, startTagMatch.attrs); // 把匹配到的开始标签的内容，传出去
+
+          continue; // console.log(html) // 截取完之后，可能还是开始标签
         } //如果不是开始标签，那么就是结束标签
 
 
@@ -272,6 +282,7 @@
 
         if (endTagMatch) {
           advance(endTagMatch[0].length);
+          end(endTagMatch[1]);
           continue;
         }
       }
@@ -281,6 +292,7 @@
         var text = html.substring(0, textEnd); // 文本内容
 
         if (text) {
+          char(text);
           advance(text.length); // console.log(html)
         }
       }

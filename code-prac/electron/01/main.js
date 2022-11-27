@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -18,6 +18,36 @@ const createWindow = () => {
 
     // process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true'
 }
+
+// 主进程中注册好事件
+ipcMain.handle('send-event', (event, msg) => {
+    console.log(msg)
+    return msg
+})
+
+app.on('before-quit', () => {
+    console.log('App is quiting')
+})
+
+app.on('browser-window-blur', (e) => {
+    console.log('App unfocused')
+})
+
+app.on('browser-window-focus', (e) => {
+    console.log('App focused')
+})
+
+
+
+
+
+
+
+
+
+
+
+
 app.on('window-all-closed', () => {
     console.log('close')
     // 对于mac系统，关闭窗口时，不能直接退出应用

@@ -10,6 +10,17 @@ const defaultTagRE = /\{\{((?:.|\r?\n)+?)\}\}/g
 
 // console.log(endTag)
 function parsetHTML(html) {// 每解析一个标签，就把它从字符串中删除掉
+    function start(tag, attrs) {
+        console.log('开始标签', tag, attrs)
+    }
+
+    function chars(text) {
+        console.log('文本', text)
+    }
+
+    function end(tag) {
+        console.log('结束标签', tag)
+    }
     function advance(n) { // 截取
         html = html.substring(n)
     }
@@ -49,7 +60,7 @@ function parsetHTML(html) {// 每解析一个标签，就把它从字符串中�
     }
 
     while(html) {
-        debugger
+        // debugger
         // vue2中，html最开始一定是一个< 
         // 如果textEnd为0，说明是一个开始标签或者结束标签
         // 如果textEnd>0，说明就是文本的结束位置
@@ -57,19 +68,23 @@ function parsetHTML(html) {// 每解析一个标签，就把它从字符串中�
         if(textEnd == 0) { 
             const startTagMatch = parseStartTag() // 开始标签的匹配结果
             if(startTagMatch) { // 解析到的开始标签
+                start(startTagMatch.tagName, startTagMatch.attrs) // 把匹配到的开始标签的内容，传出去
                 continue
-                console.log(html) // 截取完之后，可能还是开始标签
+                // console.log(html) // 截取完之后，可能还是开始标签
             }
             //如果不是开始标签，那么就是结束标签
             let endTagMatch = html.match(endTag)
             if(endTagMatch) {
                 advance(endTagMatch[0].length)
+                end(endTagMatch[1])
+
                 continue
             }
         }
         if(textEnd >= 0) { // 解析到的文本
             let text = html.substring(0, textEnd) // 文本内容
             if(text) {
+                char(text)
                 advance(text.length)
                 // console.log(html)
             }
