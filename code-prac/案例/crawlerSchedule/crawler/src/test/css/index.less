@@ -1,0 +1,278 @@
+// 定义一个变量和mixin
+// @baseFontSize: 80; // 根据实际情况，算出的1rem=实际的px，这里是80
+// .px2rem(@name, @px) {
+//   @{name}: @px / @baseFontSize * 1rem;
+// }
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('../images/bg.jpg') no-repeat top center;
+
+  line-height: 1.15;
+}
+.test  {
+  width: 600px;
+  height: 500px;
+}
+header {
+  height: 100px;
+  background: url('../images/head_bg.png') no-repeat;
+  background-size: 100% 100%;
+
+  h1 {
+    font-size: 38px;
+    line-height: 80px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .showTime {
+    position: absolute;
+    right: 30px;
+    top: 0;
+    line-height: 75px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+  }
+}
+
+.mainbox {
+  display: flex;
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 10px 10px 0;
+
+  .column {
+    flex: 3;
+
+  }
+
+  .column:nth-child(2) {
+    flex: 5;
+    margin: 0 10px 15px;
+  }
+
+  .panel {
+    position: relative;
+    height: 310px;
+    border: 1px solid rgba(25, 186, 139, 0.17);
+    background: url('../images/line\(1\).png') rgba(255, 255, 255, 0.03);
+    padding: 0 15px 40px 15px;
+    margin-bottom: 15px;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid #02a6b5;
+      border-top: 2px solid #02a6b5;
+      content: "";
+    }
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #02a6b5;
+      border-top: 2px solid #02a6b5;
+      content: "";
+    }
+
+    h2 {
+      height: 48px;
+      line-height: 48px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .chart {
+      height: 240px;
+    }
+
+    .panel-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 10px;
+        height: 10px;
+        border-left: 2px solid #02a6b5;
+        border-bottom: 2px solid #02a6b5;
+        content: "";
+      }
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #02a6b5;
+        border-bottom: 2px solid #02a6b5;
+        content: "";
+      }
+    }
+  }
+
+  .no {
+    position: relative;
+    background: rgba(101, 132, 226, 0.1);
+    padding: 15px;
+
+    .no-hd {
+      position: relative;
+      border: 1px solid rgba(25, 186, 139, 0.17);
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 30px;
+        height: 10px;
+        border-top: 2px solid #02a6b5;
+        border-left: 2px solid #02a6b5;
+      }
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        content: "";
+        width: 30px;
+        height: 10px;
+        border-right: 2px solid #02a6b5;
+        border-bottom: 2px solid #02a6b5;
+      }
+
+      ul {
+        display: flex;
+
+        li {
+          position: relative;
+          flex: 1;
+          line-height: 1rem;
+          font-size: 0.875rem;
+          color: #ffeb7b;
+          text-align: center;
+          font-family: "electronicFont";
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 25%;
+            right: 0;
+            height: 50%;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
+
+        li:nth-child(2)::after {
+          display: none;
+        }
+      }
+    }
+
+    .no-bd {
+      ul {
+        display: flex;
+
+        li {
+          flex: 1;
+          text-align: center;
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.225rem;
+          height: 0.5rem;
+          line-height: 0.5rem;
+          padding-top: 0.125rem;
+        }
+      }
+    }
+
+  }
+
+  .map {
+    @keyframes rotate1 {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes rotate2 {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+      }
+    }
+
+    position: relative;
+    height: 10.125rem;
+
+    .map1 {
+      width: 6.475rem;
+      height: 6.475rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: url('../images/map.png');
+      background-size: 100% 100%;
+      opacity: 0.3;
+    }
+
+    .map2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8.0375rem;
+      height: 8.0375rem;
+      background: url('../images/lbx.png');
+      animation: rotate1 15s linear infinite;
+      opacity: 0.6;
+      background-size: 100% 100%;
+    }
+
+    .map3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 7.075rem;
+      height: 7.075rem;
+      background: url(../images/jt.png);
+      animation: rotate2 10s linear infinite;
+      opacity: 0.6;
+      background-size: 100% 100%;
+    }
+    .chart {
+      position: absolute;
+      top: 0;
+      left: 0;
+      // background-color: pink;
+      width: 100%;
+      height: 10.125rem;
+    }
+  }
+}
