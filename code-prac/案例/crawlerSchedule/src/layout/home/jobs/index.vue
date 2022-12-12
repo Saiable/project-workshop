@@ -293,11 +293,62 @@ export default {
         (res) => {
           if (res.data) {
             // this.allSpiderData = res.data;
-            console.log(res.data);
+            // console.log(res.data);
             let value = res.data[name];
             this.singleBarX = this.getKeys(value);
             this.singleBarY = this.getValues(value);
             // resolve([this.singleBarX, this.singleBarY])
+            setTimeout(() => {
+              let barOption = {
+                color: ["#3398DB"],
+                tooltip: {
+                  trigger: "axis",
+                  axisPointer: {
+                    // 坐标轴指示器，坐标轴触发有效
+                    type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+                  },
+                },
+                grid: {
+                  left: "3%",
+                  right: "4%",
+                  bottom: "3%",
+                  containLabel: true,
+                },
+                xAxis: [
+                  {
+                    type: "category",
+                    data: [],
+                    axisTick: {
+                      alignWithLabel: true,
+                    },
+                  },
+                ],
+                yAxis: [
+                  {
+                    type: "value",
+                    axisLabel: {
+                      formatter: "{value} 条",
+                      //   align: "center",
+                    },
+                  },
+                ],
+                series: [
+                  {
+                    name: "数量",
+                    type: "bar",
+                    barWidth: "60%",
+                    data: [],
+                  },
+                ],
+              };
+              // console.log(this.singleBarX, this.singleBarY);
+              if (this.singleBarX.length > 0) {
+                barOption.xAxis[0].data = this.singleBarX;
+                barOption.series[0].data = this.singleBarY;
+
+                this.echartInstance[target] = this.initChart(target, barOption);
+              }
+            }, 0);
           } else {
             this.$message({
               message: "数据获取失败",
@@ -314,58 +365,6 @@ export default {
         }
       );
       // }
-
-      setTimeout(() => {
-        let barOption = {
-          color: ["#3398DB"],
-          tooltip: {
-            trigger: "axis",
-            axisPointer: {
-              // 坐标轴指示器，坐标轴触发有效
-              type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
-            },
-          },
-          grid: {
-            left: "3%",
-            right: "4%",
-            bottom: "3%",
-            containLabel: true,
-          },
-          xAxis: [
-            {
-              type: "category",
-              data: [],
-              axisTick: {
-                alignWithLabel: true,
-              },
-            },
-          ],
-          yAxis: [
-            {
-              type: "value",
-              axisLabel: {
-                formatter: "{value} 条",
-                //   align: "center",
-              },
-            },
-          ],
-          series: [
-            {
-              name: "数量",
-              type: "bar",
-              barWidth: "60%",
-              data: [],
-            },
-          ],
-        };
-        // console.log(this.singleBarX, this.singleBarY);
-        if (this.singleBarX.length > 0) {
-          barOption.xAxis[0].data = this.singleBarX;
-          barOption.series[0].data = this.singleBarY;
-
-          this.echartInstance[target] = this.initChart(target, barOption);
-        }
-      }, 500);
     },
     // 开启爬虫
     addSpider(data) {

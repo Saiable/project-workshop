@@ -4,9 +4,9 @@
     <div class="context">
       <PageCard iconfontL="icon-tishi" name="About Statistics" v-show="true">
         <template v-slot:text>
-          <span>
+          <!-- <span>
             This view displays real-time statistics about the spider jobs
-          </span>
+          </span> -->
           <div class="total-number">
             <span>Total:</span>
             <span class="text">{{ totalNumber }}</span>
@@ -291,9 +291,9 @@ export default {
   .context {
     padding: 24px;
     .total-number {
-      font-family: electronicFont;
+      // font-family: electronicFont;
       font-size: 18px;
-      float: right;
+      // float: right;
       .text {
         font-size: 30px;
       }
