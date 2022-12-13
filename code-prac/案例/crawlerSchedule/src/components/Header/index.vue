@@ -5,12 +5,12 @@
       <i
         class="iconfont icon-shuaxin1"
         @click="refreshData()"
-        title="Refresh"
+        title="统计"
       ></i>
     </div>
     <div class="account">
       <i class="iconfont icon-1zhanghu"></i>
-      <span>Admin</span>
+      <span>管理员</span>
     </div>
   </div>
 </template>

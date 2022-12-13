@@ -2,21 +2,37 @@
   <div class="container-chart">
     <Header :name="name" />
     <div class="context">
-      <PageCard iconfontL="icon-tishi" name="About Statistics" v-show="true">
+      <PageCard iconfontL="icon-tishi" name="统计" :height="100">
         <template v-slot:text>
           <!-- <span>
             This view displays real-time statistics about the spider jobs
           </span> -->
           <div class="total-number">
-            <span>Total:</span>
-            <span class="text">{{ totalNumber }}</span>
+            <div class="text-container">
+              <span>总数:</span>
+              <span class="text">{{ totalNumber }}</span>
+            </div>
+            <div class="alarm-container" v-show="alarmData.length">
+              <el-table :data="alarmData" style="width: 100%" :max-height="90">
+                <el-table-column
+                  prop="fileName"
+                  label="告警文件"
+                  sortable
+                ></el-table-column>
+                <el-table-column
+                  prop="nums"
+                  label="数量"
+                  sortable
+                ></el-table-column>
+              </el-table>
+            </div>
           </div>
         </template>
       </PageCard>
       <!-- 所有的爬虫任务 -->
       <PageCard
         iconfontL="icon-tubiao-zhuzhuangtu"
-        name="Spider Counter"
+        name="爬虫总数"
         class="charts-container"
         :showloading="showLoadingA"
         :height="300"
@@ -42,7 +58,7 @@
         </div>
         <PageCard
           iconfontL="icon-tubiao-zhuzhuangtu"
-          name="Spider Counter By Days"
+          name="单个爬虫数量"
           class="charts-container"
           :showloading="showLoadingB"
           :height="300"
@@ -57,12 +73,16 @@
 <script>
 import Header from "@/components/Header/index.vue";
 import PageCard from "@/components/PageCard/index.vue";
-import { getAllCounter, getCounterByDays } from "@/api/crawler.js";
+import {
+  getAllCounter,
+  getCounterByDays,
+  getAlarmAdmin,
+} from "@/api/crawler.js";
 export default {
   name: "Echarts",
   data() {
     return {
-      name: "Statistics",
+      name: "统计",
       optionsAllCounter: {
         color: ["#3398DB"],
         tooltip: {
@@ -132,6 +152,7 @@ export default {
       },
       showLoadingA: true,
       showLoadingB: true,
+      showLoadingC: true,
       selectOptions: [
         {
           value: "7",
@@ -151,6 +172,36 @@ export default {
       echartsInstance: {},
       echartsMounted: false,
       totalNumber: 0,
+      alarmData: [
+        {
+          fileName: "测试1",
+          nums: 6,
+        },
+        {
+          fileName: "测试2",
+          nums: 5,
+        },
+        {
+          fileName: "测试3",
+          nums: 3,
+        },
+        {
+          fileName: "测试4",
+          nums: 1,
+        },
+        {
+          fileName: "测试5",
+          nums: 2,
+        },
+        {
+          fileName: "测试6",
+          nums: 0,
+        },
+        {
+          fileName: "测试7",
+          nums: 6,
+        },
+      ],
     };
   },
   components: {
@@ -161,6 +212,7 @@ export default {
   mounted() {
     this.getAllCounter();
     this.getCounterByDays();
+    // this.getAlarmAdmin();
   },
   methods: {
     getKeys(obj) {
@@ -250,7 +302,7 @@ export default {
                 name: legend[index],
                 data: this.getValues(item),
                 type: "line",
-                stack: "x",
+                // stack: "x",
               });
             });
             // console.log(series) // 纵坐标
@@ -264,6 +316,7 @@ export default {
             if (this.echartsMounted) {
               this.echartsInstance.dispose();
             }
+            // console.log(this.lineOptions);
             this.echartsInstance = this.initChart("chartB", this.lineOptions);
             this.echartsMounted = true;
           } else {
@@ -282,6 +335,39 @@ export default {
         }
       );
     },
+    // 获取告警信息
+    getAlarmAdmin() {
+      this.showLoadingC = true;
+      getAlarmAdmin().then(
+        (res) => {
+          this.showLoadingC = false;
+          if (res.errcode == 200) {
+            // console.log(res.data);
+            let keys = this.getKeys(res.data);
+            let values = this.getValues(res.data);
+            console.log(keys, values);
+            keys.forEach((item, index) => {
+              this.alarmData.push({
+                fileName: item,
+                nums: values[index],
+              });
+            });
+          } else {
+            this.$message({
+              message: "告警数据获取失败",
+              type: "error",
+            });
+          }
+        },
+        (err) => {
+          console.log(err);
+          this.$message({
+            message: "告警数据获取失败",
+            type: "error",
+          });
+        }
+      );
+    },
   },
 };
 </script>
@@ -291,11 +377,20 @@ export default {
   .context {
     padding: 24px;
     .total-number {
+      position: relative;
       // font-family: electronicFont;
       font-size: 18px;
       // float: right;
-      .text {
-        font-size: 30px;
+      .text-container {
+        .text {
+          font-size: 30px;
+        }
+      }
+      .alarm-container {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        width: 20%;
       }
     }
     .charts-container {

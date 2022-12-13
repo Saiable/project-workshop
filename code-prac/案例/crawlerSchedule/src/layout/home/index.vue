@@ -9,7 +9,7 @@
             :class="$route.path === '/home/echarts' ? 'is-active' : ''"
           >
             <span class="spider iconfont icon-tupianpachong-02"></span>
-            spider.mon
+            爬虫监控平台
           </span>
           <span class="fold iconfont icon-qiehuanbaogaomingxi"></span>
         </div>
@@ -20,7 +20,7 @@
               @click="toJobs()"
               :class="$route.path === '/home/jobs' ? 'is-active' : ''"
             >
-              Jobs
+              任务
               <span class="iconfont icon-shouye"></span>
             </li>
           </ul>

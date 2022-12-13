@@ -6,7 +6,7 @@
       <div class="outer-container">
         <div class="header">
           <i class="iconfont icon-jihuatiaodu"></i>
-          Jobs
+          任务
         </div>
         <div class="control">
           <div class="group">
@@ -14,17 +14,17 @@
             <!-- <li class="item" :class="limited.start"> -->
             <button class="item" data-item="start" @click="handleStart">
               <i class="iconfont icon-daochu1024-15"></i>
-              <span>Start</span>
+              <span>开启</span>
             </button>
             <!-- <li class="item" :class="limited.stop" @click="stopJobs"> -->
             <button class="item" data-item="stop" @click="handleStop">
               <i class="iconfont icon-lujing"></i>
-              <span>Stop</span>
+              <span>停止</span>
             </button>
             <!-- <li class="item" :class="limited.restart"> -->
             <button class="item" data-item="restart" @click="handleRestart">
               <i class="iconfont icon-shuaxin1"></i>
-              <span>Restart</span>
+              <span>重启</span>
             </button>
             <li class="input">
               <el-input
@@ -150,10 +150,10 @@ import Header from "@/components/Header/index.vue";
 import SelectCard from "@/components/SelectCard/index.vue";
 
 export default {
-  name: "jobs",
+  name: "Jobs",
   data() {
     return {
-      name: "Jobs List",
+      name: "任务列表",
       // allSpiderData: [
       //   {
       //     job_id: "spider_peewee_template_test2",
@@ -199,7 +199,8 @@ export default {
       selectValue: {},
       isExpend: false,
       echartInstance: {},
-      intervalsInput: "5",
+      defaultInterval: "3600", // 不会被操作
+      intervalsInput: "3600",
     };
   },
   watch: {
@@ -237,7 +238,7 @@ export default {
   methods: {
     refreshData() {
       // console.log("refreshData");
-      this.intervalsInput = "5";
+      this.intervalsInput = this.defaultInterval;
       this.getAllAdmin();
     },
     getKeys(obj) {
@@ -501,7 +502,7 @@ export default {
 
         let data = {
           py_names: name,
-          intervals: this.intervalsInput || 0,
+          intervals: this.intervalsInput || this.defaultInterval,
         };
         this.addSpider(data);
         this.refreshData();
@@ -517,7 +518,7 @@ export default {
 
         let data = {
           py_names: name,
-          intervals: this.intervalsInput || 0,
+          intervals: this.intervalsInput || this.defaultInterval,
         };
         this.deleteSpider(data);
         this.refreshData();
@@ -538,12 +539,13 @@ export default {
     checkNumberInput() {
       if (this.intervalsInput >= 0) {
         // console.log("输入合法");
+        return;
       } else {
         this.$message({
-          message: "请输入正数，默认间隔为5s",
+          message: "请输入正数，默认间隔为3600s",
           type: "error",
         });
-        this.intervalsInput = "5";
+        this.intervalsInput = this.defaultInterval;
         return;
       }
     },
