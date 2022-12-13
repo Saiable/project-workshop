@@ -1,4 +1,5 @@
-console.log(`Number: ${Number}`)
+console.log('Number:')
+console.dir(Number)
 console.log(`0.1 + 0.2: ${0.1 + 0.2}`) // 0.30000000000000004
 console.log(`Infinity: ${Number.MAX_VALUE, Number.MIN_VALUE}`)
 
