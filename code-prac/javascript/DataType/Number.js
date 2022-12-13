@@ -1,5 +1,6 @@
-console.log(`0.1 + 0.2：${0.1 + 0.2}`) // 0.30000000000000004
-
+console.log(`Number: ${Number}`)
+console.log(`0.1 + 0.2: ${0.1 + 0.2}`) // 0.30000000000000004
+console.log(`Infinity: ${Number.MAX_VALUE, Number.MIN_VALUE}`)
 
 console.log(Number('12.5')) // 12.5
 console.log(Number('12.5px')) // NaN
