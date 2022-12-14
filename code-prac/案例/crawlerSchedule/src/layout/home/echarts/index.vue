@@ -2,7 +2,7 @@
   <div class="container-chart">
     <Header :name="name" />
     <div class="context">
-      <PageCard iconfontL="icon-tishi" name="统计" :height="100">
+      <PageCard iconfontL="icon-tishi" name="统计">
         <template v-slot:text>
           <!-- <span>
             This view displays real-time statistics about the spider jobs
@@ -12,19 +12,31 @@
               <span>总数:</span>
               <span class="text">{{ totalNumber }}</span>
             </div>
-            <div class="alarm-container" v-show="alarmData.length">
-              <el-table :data="alarmData" style="width: 100%" :max-height="90">
+            <div
+              class="alarm-container"
+              v-show="alarmData.length"
+            >
+              <!-- <el-table
+                :data="alarmData"
+                style="width: 100%"
+                :show-header="false"
+              >
                 <el-table-column
                   prop="fileName"
-                  label="告警文件"
-                  sortable
                 ></el-table-column>
                 <el-table-column
                   prop="nums"
                   label="数量"
                   sortable
                 ></el-table-column>
-              </el-table>
+              </el-table> -->
+              <div class="alarm-text">告 警</div>
+
+              <ul class="item-container">
+                <li class="item" v-for="(item, index) in alarmData">
+                  {{ item.fileName }}
+                </li>
+              </ul>
             </div>
           </div>
         </template>
@@ -173,34 +185,42 @@ export default {
       echartsMounted: false,
       totalNumber: 0,
       alarmData: [
-        {
-          fileName: "测试1",
-          nums: 6,
-        },
-        {
-          fileName: "测试2",
-          nums: 5,
-        },
-        {
-          fileName: "测试3",
-          nums: 3,
-        },
-        {
-          fileName: "测试4",
-          nums: 1,
-        },
-        {
-          fileName: "测试5",
-          nums: 2,
-        },
-        {
-          fileName: "测试6",
-          nums: 0,
-        },
-        {
-          fileName: "测试7",
-          nums: 6,
-        },
+        // {
+        //   fileName: "测试1：6条",
+        //   // nums: 6,
+        // },
+        // {
+        //   fileName: "测试1：6条",
+        //   // nums: 6,
+        // },
+        // {
+        //   fileName: "测试1：6条",
+        //   // nums: 6,
+        // },
+        // {
+        //   fileName: "测试2：5条",
+        //   // nums: 5,
+        // },
+        // {
+        //   fileName: "测试3：3条",
+        //   // nums: 3,
+        // },
+        // {
+        //   fileName: "测试4：1条",
+        //   // nums: 1,
+        // },
+        // {
+        //   fileName: "测试5：2条",
+        //   // nums: 2,
+        // },
+        // {
+        //   fileName: "测试6：0条",
+        //   // nums: 0,
+        // },
+        // {
+        //   fileName: "测试7：6条",
+        //   // nums: 6,
+        // },
       ],
     };
   },
@@ -212,31 +232,9 @@ export default {
   mounted() {
     this.getAllCounter();
     this.getCounterByDays();
-    // this.getAlarmAdmin();
+    this.getAlarmAdmin();
   },
   methods: {
-    getKeys(obj) {
-      let arr = [];
-      for (let key in obj) {
-        arr.push(key);
-      }
-      return arr;
-    },
-    getValues(obj) {
-      let arr = [];
-      for (let key in obj) {
-        arr.push(obj[key]);
-      }
-      return arr;
-    },
-    initChart(ref, options) {
-      let myChart = this.$echarts.init(this.$refs[ref]);
-      myChart.setOption(options);
-      window.addEventListener("resize", function () {
-        myChart.resize();
-      });
-      return myChart;
-    },
     collapse(value) {
       this.selectShow = value;
     },
@@ -345,11 +343,10 @@ export default {
             // console.log(res.data);
             let keys = this.getKeys(res.data);
             let values = this.getValues(res.data);
-            console.log(keys, values);
+            // console.log(keys, values);
             keys.forEach((item, index) => {
               this.alarmData.push({
-                fileName: item,
-                nums: values[index],
+                fileName: item + ": " + values[index] + "条",
               });
             });
           } else {
@@ -377,7 +374,8 @@ export default {
   .context {
     padding: 24px;
     .total-number {
-      position: relative;
+      display: flex;
+      justify-content: space-between;
       // font-family: electronicFont;
       font-size: 18px;
       // float: right;
@@ -386,11 +384,40 @@ export default {
           font-size: 30px;
         }
       }
+
       .alarm-container {
-        position: absolute;
-        top: -20px;
-        right: 0;
-        width: 20%;
+        position: relative;
+
+        // position: absolute;
+        // top: -20px;
+        // right: 0;
+        width: 40%;
+
+        .alarm-text {
+          // position: absolute;
+          margin-bottom: 10px;
+          text-align: center;
+          // font-weight: 500;
+          font-size: 25px;
+        }
+        .item-container {
+          border-top: 1px solid rgba(128, 128, 128, 0.774);
+          border-bottom: 1px solid rgba(128, 128, 128, 0.774);
+          .item {
+            display: inline-block;
+            width: calc(100% / 5);
+
+            padding: 10px 5px;
+            text-align: center;
+          }
+        }
+
+        // .td-table:first-child {
+        //   border-top: 1px solid rgba(128, 128, 128, 0.774);
+        // }
+        // .td-table:last-child {
+        //   border-bottom: 1px solid rgba(128, 128, 128, 0.774);
+        // }
       }
     }
     .charts-container {

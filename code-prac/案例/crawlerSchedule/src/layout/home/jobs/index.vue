@@ -59,12 +59,19 @@
             <span>Add Jobs</span>
           </div>
         </div>
-        <div class="search" v-show="false">
-          <i class="iconfont icon-sousuotianchong"></i>
-          <input type="text" class="search-input" placeholder="Search ..." />
+        <div class="search">
+          <i class="iconfont icon-sousuotianchong" @click="inputChange"></i>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search ..."
+            v-model="searchInput"
+            @keyup.enter="inputChange"
+            @keyup.esc="clearInput"
+          />
         </div>
         <div class="list">
-          <template v-if="!allSpiderData.length">
+          <template v-if="!allSpiderDataCopy.length">
             <div class="loading"></div>
           </template>
           <template v-else>
@@ -145,25 +152,17 @@ import {
   addSpider,
   deleteSpider,
 } from "@/api/crawler.js";
-import globalFunc from "@/utils/utils.js";
 import Header from "@/components/Header/index.vue";
 import SelectCard from "@/components/SelectCard/index.vue";
+import throttle from "lodash/throttle";
 
 export default {
   name: "Jobs",
   data() {
     return {
       name: "任务列表",
-      // allSpiderData: [
-      //   {
-      //     job_id: "spider_peewee_template_test2",
-      //     job_name: "spider_executor",
-      //     executor: "process_pool",
-      //     next_run_time: "2022-12-05 15:39:51",
-      //     job_chinese_name: "测试2",
-      //   },
-      // ],
       allSpiderData: [],
+      allSpiderDataCopy: [], // 数据副本，用作搜索数据恢复
       multipleSelection: [],
       // limited: {
       //   start: "green-pale",
@@ -173,18 +172,6 @@ export default {
       //   resume: "blue-pale",
       //   remove: "red-pale",
       // },
-      barOptions: {
-        xAxis: {
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        yAxis: {},
-        series: [
-          {
-            type: "bar",
-            data: [23, 24, 18, 25, 27, 28, 25],
-          },
-        ],
-      },
       singleBarX: [],
       singleBarY: [],
       status: {
@@ -201,9 +188,15 @@ export default {
       echartInstance: {},
       defaultInterval: "3600", // 不会被操作
       intervalsInput: "3600",
+      searchInput: "",
     };
   },
   watch: {
+    searchInput(newValue) {
+      if (newValue == "") {
+        this.allSpiderData = this.allSpiderDataCopy;
+      }
+    },
     // 暂时不需要细分控制各按钮的状态
     // multipleSelection: {
     //   deep: true, // 开启深度监视
@@ -237,33 +230,10 @@ export default {
   },
   methods: {
     refreshData() {
-      // console.log("refreshData");
       this.intervalsInput = this.defaultInterval;
       this.getAllAdmin();
+      this.clearInput()
     },
-    getKeys(obj) {
-      let arr = [];
-      for (let key in obj) {
-        arr.push(key);
-      }
-      return arr;
-    },
-    getValues(obj) {
-      let arr = [];
-      for (let key in obj) {
-        arr.push(obj[key]);
-      }
-      return arr;
-    },
-    initChart(ref, options) {
-      let myChart = this.$echarts.init(this.$refs[ref]);
-      myChart.setOption(options);
-      window.addEventListener("resize", function () {
-        myChart.resize();
-      });
-      return myChart;
-    },
-    initDynamicChart(ref, dyOptions) {},
     // 获取所有的爬虫Jobs列表
     getAllAdmin() {
       getAllAdmin().then(
@@ -271,6 +241,7 @@ export default {
           // console.log(res);
           if (res.data) {
             this.allSpiderData = res.data;
+            this.allSpiderDataCopy = res.data;
           } else {
             this.$message({
               message: "数据获取失败",
@@ -293,7 +264,6 @@ export default {
       getCounterByName(name, nums).then(
         (res) => {
           if (res.data) {
-            // this.allSpiderData = res.data;
             // console.log(res.data);
             let value = res.data[name];
             this.singleBarX = this.getKeys(value);
@@ -373,8 +343,6 @@ export default {
         (res) => {
           // console.log(res);
           if (res.errcode == 200) {
-            // this.allSpiderData = res.data;
-
             this.$message({
               message: "操作成功",
               type: "success",
@@ -401,8 +369,6 @@ export default {
         (res) => {
           // console.log(res);
           if (res.errcode == 200) {
-            // this.allSpiderData = res.data;
-
             this.$message({
               message: "操作成功",
               type: "success",
@@ -508,9 +474,6 @@ export default {
         this.refreshData();
       }
     },
-    debounceHandleStart() {
-      globalFunc.debounce(this.handleStart);
-    },
     handleStop() {
       let name = this.handleControl();
       if (name) {
@@ -552,6 +515,39 @@ export default {
     clearNumberInput() {
       this.intervalsInput = ""; // 空串转为数字，是0
       this.checkNumberInput();
+    },
+    inputChange() {
+      let arg = this.searchInput;
+      let filter = this.allSpiderDataCopy.filter((item, index, arr) => {
+        if (
+          item.job_chinese_name.indexOf(arg) > -1 ||
+          item.job_id.indexOf(arg) > -1
+        ) {
+          return item;
+        }
+      });
+      if (filter.length == 0) {
+        this.allSpiderData = [];
+        this.$message({
+          message: "搜索结果为空",
+          type: "warn",
+        });
+        return;
+      } else {
+        this.allSpiderData = filter;
+        this.$message({
+          message: "搜索成功",
+          type: "success",
+        });
+      }
+      if (arg.length == 0) {
+        this.allSpiderData = this.allSpiderDataCopy;
+      }
+    },
+    clearInput() {
+      if (this.searchInput) {
+        this.searchInput = "";
+      }
     },
   },
   mounted() {

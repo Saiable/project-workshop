@@ -3,12 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "default-passive-events";
-// let echarts = require('echarts');
-import * as echarts from "echarts";
-Vue.prototype.$echarts = echarts;
-
 import "@/styles/index.less";
 import "@/utils/element.js";
+import "@/utils/echarts.js";
+import "@/utils/globalMixin.js";
 Vue.config.productionTip = false;
 require("@/utils/flexible.js");
 

@@ -3,7 +3,7 @@ export default {
    * 函数防抖
    * 触发事件后在n秒后执行，如果n秒内又触发事件，则重新计算时间
    */
-  debounce(fn, wait = 3000) {
+  debounce(fn, wait = 1000) {
     let timer;
     return function () {
       let context = this;
