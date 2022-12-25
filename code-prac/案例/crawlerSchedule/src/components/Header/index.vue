@@ -5,7 +5,7 @@
       <i
         class="iconfont icon-shuaxin1"
         @click="refreshData()"
-        title="统计"
+        title="刷新"
       ></i>
     </div>
     <div class="account">

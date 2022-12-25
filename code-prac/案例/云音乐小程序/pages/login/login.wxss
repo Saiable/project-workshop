@@ -1,91 +1,105 @@
 /* pages/login/login.wxss */
-.wrapper{
-  position:relative;
-  z-index: 90;
-  padding-bottom: 40rpx;
-}
-
-.left-top-sign{
-  font-size: 120rpx;
-  color: #f8f8f8;
-  position:relative;
-  left: -16rpx;
-  letter-spacing: 2rpx;
-}
-
-.welcome{
-  position:relative;
-  left: 50rpx;
-  top: -90rpx;
-  font-size: 46rpx;
-  color: #555;
-}
-
-
-.input-content{
-  padding: 0 60rpx;
-}
-.input-item{
-  display:flex;
-  flex-direction: column;
-  align-items:flex-start;
-  justify-content: center;
-  padding: 0 30rpx;
-  background:#f8f6fc;
-  height: 120rpx;
-  border-radius: 4px;
-  margin-bottom: 50rpx;
-
-}
-
-.input-item:last-child{
-  margin-bottom: 0;
-}
-.input-item .tit{
-  height: 50rpx;
-  line-height: 56rpx;
-  font-size: 30rpx;
-  color: #606266;
-}
-.input-item input{
-  height: 60rpx;
-  font-size: 30rpx;
-  color: #303133;
+.container {
+  /* position: relative; */
   width: 100%;
-}
-.confirm-btn{
-  width: 630rpx!important;
-  height: 76rpx;
-  line-height: 76rpx;
-  border-radius: 50rpx;
-  margin-top: 70rpx;
-  background: #d43c33;
-  color: #fff;
-  font-size: 32rpx;
+  height: 100%;
   padding: 0;
+  background-image: linear-gradient(#ffe8ec, white);
 }
-.confirm-btn2:after{
-  border-radius: 100px;
+.container .experience {
+  position: absolute;
+  top: 40rpx;
+  right: 50rpx;
+  font-size: 30rpx;
+  color: #757575;
 }
-
-.forget-section{
+.container .logo {
+  position: relative;
+  width: 100%;
+  height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.container .logo .iconfont {
+  font-size: 120rpx;
+  color: #d43c33;
+}
+.container .logo .circle {
+  position: absolute;
+  border-radius: 50%;
+}
+.container .logo .circle-one {
+  width: 240rpx;
+  height: 240rpx;
+  border: 1px solid rgba(255, 200, 210, 0.788);
+}
+.container .logo .circle-two {
+  width: 360rpx;
+  height: 360rpx;
+  border: 1px solid rgba(248, 213, 219, 0.856);
+}
+.container .logo .circle-three {
+  width: 480rpx;
+  height: 480rpx;
+  border: 1px solid rgba(248, 220, 225, 0.925);
+}
+.container .phone-login {
+  width: 100%;
+  height: 500rpx;
+  position: relative;
+}
+.container .phone-login .btn {
+  position: absolute;
+  width: 600rpx;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.container .phone-login .btn .text {
+  font-size: 40rpx;
+}
+.container .phone-login .check {
+  position: absolute;
+  top: 30%;
+  width: 600rpx;
   font-size: 28rpx;
-  color: #4399fc;
-  text-align: center;
-  margin-top: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
 }
-
-.register-section{
-  position:absolute;
+.container .phone-login .check .text {
+  color: #757575;
+}
+.container .phone-login .check .text-link {
+  color: #4399fc;
+}
+.container .action-sheet {
+  padding: 30rpx 60rpx;
+}
+.container .action-sheet .description {
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+}
+.container .action-sheet .description .text {
+  color: #757575;
+}
+.container .action-sheet .description .text-link {
+  color: #4399fc;
+}
+.container .action-sheet .button .btn {
+  font-size: 40rpx;
+}
+.container .register-section {
+  position: absolute;
   left: 0;
   bottom: 50rpx;
   width: 100%;
   font-size: 28rpx;
-  color: #606266;
+  color: #757575;
   text-align: center;
-
 }
-.register-section text{
+.container .register-section .text {
   color: #4399fc;
   margin-left: 10rpx;
 }

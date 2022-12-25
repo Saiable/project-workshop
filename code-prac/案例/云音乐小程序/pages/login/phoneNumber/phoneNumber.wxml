@@ -1,0 +1,86 @@
+<!-- pages/login/phoneNumber.wxml -->
+<view class="phone-number-container">
+    <view class="des-a">登录体验更多精彩</view>
+    <view class="des-b">未注册手机号登陆后将自动创建账号</view>
+    <view class="select-container">
+        <!-- <view class="number">11234389769</view> -->
+        <van-cell-group border="{{false}}" class="cell-group" style="border-bottom: 1px solid grey;">
+            <van-field value="{{ fieldValue }}" is-link arrow-direction="down" readonly bind:tap="onClick"
+                class="select" border="{{false}}" />
+            <van-field value="{{ phoneNumber }}" placeholder="请输入手机号" focus auto-focus clearable class="phone-number" />
+        </van-cell-group>
+        <van-popup show="{{ show }}" round position="bottom" closeable bind:close="onClose" afe-area-inset-top
+            class="pop-up" sticky="{{ false }}">
+            <view class="choose-text">
+                <text class="iconfont icon-qingkong" bind:tap="onClose"></text>
+                选择国家和地区</view>
+            <view class="index-bar">
+                <van-index-bar index-list="{{ indexList }}" sticky="{{true}}" sticky-offset-top="140" bind:select="selectIndex">
+                    <!-- <view>
+                        <van-index-anchor index="常用">常用</van-index-anchor>
+                        <van-cell title="中国" value="+86" />
+                        <van-cell title="中国香港" value="+852" />
+                        <van-cell title="中国澳门" value="+853" />
+                        <van-cell title="中国台湾" value="+886" />
+                    </view> -->
+
+                    <view>
+                        <van-index-anchor index="A">A</van-index-anchor>
+                        <van-cell title="阿尔巴尼亚" value="+355" />
+                        <van-cell title="阿尔及利亚" value="+213" />
+                        <van-cell title="阿富汗" value="+93" />
+                        <van-cell title="阿根廷" value="+54" />
+                        <van-cell title="阿拉伯联合酋长国" value="+971" />
+                        <van-cell title="阿曼" value="+968" />
+                    </view>
+                    <view>
+                        <van-index-anchor index="B">B</van-index-anchor>
+                        <van-cell title="巴巴多斯" value="+1246" />
+                        <van-cell title="巴布亚新几内亚" value="+675" />
+                        <van-cell title="巴哈马" value="+1242" />
+                        <van-cell title="巴基斯坦" value="+92" />
+                        <van-cell title="巴拉圭" value="+595" />
+                        <van-cell title="巴林" value="+973" />
+                        <van-cell title="巴拿马" value="+507" />
+                    </view>
+                    <view>
+                        <van-index-anchor index="C">C</van-index-anchor>
+                        <van-cell title="巴巴多斯" value="+1246" />
+                        <van-cell title="巴布亚新几内亚" value="+675" />
+                        <van-cell title="巴哈马" value="+1242" />
+                        <van-cell title="巴基斯坦" value="+92" />
+                        <van-cell title="巴拉圭" value="+595" />
+                        <van-cell title="巴林" value="+973" />
+                        <van-cell title="巴拿马" value="+507" />
+                    </view>
+                    <view>
+                        <van-index-anchor index="D">D</van-index-anchor>
+                        <van-cell title="巴巴多斯" value="+1246" />
+                        <van-cell title="巴布亚新几内亚" value="+675" />
+                        <van-cell title="巴哈马" value="+1242" />
+                        <van-cell title="巴基斯坦" value="+92" />
+                        <van-cell title="巴拉圭" value="+595" />
+                        <van-cell title="巴林" value="+973" />
+                        <van-cell title="巴拿马" value="+507" />
+                    </view>
+                    <view>
+                        <van-index-anchor index="E">E</van-index-anchor>
+                        <van-cell title="巴巴多斯" value="+1246" />
+                        <van-cell title="巴布亚新几内亚" value="+675" />
+                        <van-cell title="巴哈马" value="+1242" />
+                        <van-cell title="巴基斯坦" value="+92" />
+                        <van-cell title="巴拉圭" value="+595" />
+                        <van-cell title="巴林" value="+973" />
+                        <van-cell title="巴拿马" value="+507" />
+                    </view>
+                </van-index-bar>
+            </view>
+        </van-popup>
+    </view>
+    <view class="next-step">
+        <van-button>下一步</van-button>
+    </view>
+    <view class="find-account">
+        <text>找回账号</text>
+    </view>
+</view>

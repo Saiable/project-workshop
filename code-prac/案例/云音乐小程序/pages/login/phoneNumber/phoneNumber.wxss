@@ -1,0 +1,63 @@
+/* pages/login/phoneNumber.wxss */
+.phone-number-container {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 40rpx;
+}
+.phone-number-container .des-a {
+  margin-top: 20rpx;
+  font-size: 40rpx;
+  letter-spacing: 4rpx;
+}
+.phone-number-container .des-b {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #757575;
+}
+.phone-number-container .select-container {
+  margin-top: 80rpx;
+}
+.phone-number-container .select-container .select {
+  display: inline-block;
+  width: 180rpx;
+  font-size: 28rpx;
+}
+.phone-number-container .select-container .phone-number {
+  display: inline-block;
+  width: calc(100% - 180rpx);
+  font-size: 28rpx;
+}
+.phone-number-container .select-container .pop-up {
+  position: relative;
+}
+.phone-number-container .select-container .pop-up .choose-text {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
+  display: inline-block;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-left: 20rpx;
+}
+.phone-number-container .select-container .pop-up .choose-text .iconfont {
+  font-size: 50rpx;
+  display: inline-block;
+  height: 100rpx;
+  line-height: 100rpx;
+  vertical-align: -0.15em;
+}
+.phone-number-container .select-container .pop-up .index-bar {
+  width: 100%;
+  max-height: calc(100vh - 260rpx);
+}
+.phone-number-container .next-step {
+  width: 100%;
+  height: 200rpx;
+  margin-top: 80rpx;
+}
+.phone-number-container .find-account {
+  font-size: 28rpx;
+  color: #4399fc;
+}

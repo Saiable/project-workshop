@@ -1,0 +1,5 @@
+<!--components/RegionCell/RegionCell.wxml-->
+<view class="region-cell-container">
+    <van-index-anchor index="index">{{indexTitle}}</van-index-anchor>
+    <slot></slot>
+</view>

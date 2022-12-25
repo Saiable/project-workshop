@@ -1,27 +1,68 @@
-
 <view class="container">
-  <view class="wrapper">
-    <view class="left-top-sign">LOGIN</view>
-    <view class="welcome">
-      欢迎回来！
-    </view>
-    <view class="input-content">
-      <view class="input-item">
-        <text class="tit">手机号码</text>
-        <input  type="text" placeholder="请输入手机号码" data-test="abc" data-type="phone" id="phone" bindinput="handleInput"/>
-      </view>
-      <view class="input-item">
-        <text class="tit">密码</text>
-        <input type="password"  placeholder="请输入密码" data-test="abc" data-type="password" id="password" bindinput="handleInput"/>
-      </view>
-    </view>
-    <button class="confirm-btn" bindtap="login">登录</button>
-    <view class="forget-section">
-      忘记密码?
+  <!-- <view class="experience">
+    立即体验
+  </view> -->
+  <view class="logo">
+    <view class="iconfont icon-yinle1"></view>
+    <view class="circle-one circle"></view>
+    <view class="circle-two circle"></view>
+    <view class="circle-three circle"></view>
+  </view>
+  <view class="phone-login">
+    <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">登录</button> -->
+    <van-button class="btn" color="#d43c33" type="primary" round block bind:click="phoneLogin">
+      <text class="text">手机号登录</text>
+    </van-button>
+    <view class="check">
+      <van-checkbox value="{{ checked }}" bind:change="onChange" shape="square" icon-size="12px" label-disabled="true">
+        <text class="text">我已阅读并同意</text>
+        <text class="text-link">《服务条款》、</text>
+        <text class="text-link">《隐私政策》</text>
+      </van-checkbox>
     </view>
   </view>
+  <van-action-sheet show="{{ sheetShow }}" title="服务协议和隐私政策等指引" bind:close="onClose" bind:click-overlay="onClose">
+    <view class="action-sheet">
+      <view class="description">
+        <text class="text">进入下一步前，请阅读并同意云音乐的</text>
+        <text class="text-link">《服务条款》、《隐私政策》</text>
+      </view>
+      <view class="button">
+        <van-row gutter="20">
+          <van-col span="12">
+            <van-button class="btn btn-cancel" type="primary" round block plain color="#d43c33" bind:click="onClose">
+              不同意
+            </van-button>
+          </van-col>
+          <van-col span="12">
+            <van-button class="btn btn-agree" color="#d43c33" type="primary" round block>
+              同意并继续
+            </van-button>
+          </van-col>
+        </van-row>
+      </view>
+    </view>
+  </van-action-sheet>
   <view class="register-section">
     还没有账号?
-    <text >马上注册</text>
+    <text class="text">马上注册</text>
   </view>
+  <!-- <view class="wrapper" hidden>
+    <view class="account-login">
+      <view class="left-top-sign">LOGIN</view>
+      <view class="welcome">欢迎回来！</view>
+      <view class="input-content">
+        <view class="input-item">
+          <text class="tit">手机号码</text>
+          <input type="text" placeholder="请输入手机号码" data-test="abc" data-type="phone" id="phone" bindinput="handleInput" />
+        </view>
+        <view class="input-item">
+          <text class="tit">密码</text>
+          <input type="password" placeholder="请输入密码" data-test="abc" data-type="password" id="password" bindinput="handleInput" />
+        </view>
+      </view>
+      <button class="confirm-btn" bindtap="login">登录</button>
+      <view class="forget-section">忘记密码?</view>
+    </view>
+  </view> -->
 </view>

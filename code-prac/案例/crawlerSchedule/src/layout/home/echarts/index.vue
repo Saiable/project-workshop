@@ -1,37 +1,22 @@
 <template>
   <div class="container-chart">
-    <Header :name="name" />
+    <Header :name="name" @refreshData="refreshData" />
     <div class="context">
       <PageCard iconfontL="icon-tishi" name="统计">
         <template v-slot:text>
-          <!-- <span>
-            This view displays real-time statistics about the spider jobs
-          </span> -->
           <div class="total-number">
             <div class="text-container">
               <span>总数:</span>
               <span class="text">{{ totalNumber }}</span>
             </div>
-            <div
-              class="alarm-container"
-              v-show="alarmData.length"
-            >
-              <!-- <el-table
-                :data="alarmData"
-                style="width: 100%"
-                :show-header="false"
-              >
-                <el-table-column
-                  prop="fileName"
-                ></el-table-column>
-                <el-table-column
-                  prop="nums"
-                  label="数量"
-                  sortable
-                ></el-table-column>
-              </el-table> -->
-              <div class="alarm-text">告 警</div>
+          </div>
+        </template>
+      </PageCard>
 
+      <PageCard iconfontL="icon-tishi" name="告警" v-show="alarmData.length">
+        <template v-slot:text>
+          <div>
+            <div class="alarm-container" v-show="alarmData.length">
               <ul class="item-container">
                 <li class="item" v-for="(item, index) in alarmData">
                   {{ item.fileName }}
@@ -47,7 +32,7 @@
         name="爬虫总数"
         class="charts-container"
         :showloading="showLoadingA"
-        :height="300"
+        :height="500"
       >
         <div slot="chart" class="chart" ref="chartA"></div>
       </PageCard>
@@ -73,7 +58,7 @@
           name="单个爬虫数量"
           class="charts-container"
           :showloading="showLoadingB"
-          :height="300"
+          :height="500"
           @collapse="collapse"
         >
           <div slot="chart" class="chart" ref="chartB"></div>
@@ -96,6 +81,7 @@ export default {
     return {
       name: "统计",
       optionsAllCounter: {
+        dataZoom: [],
         color: ["#3398DB"],
         tooltip: {
           trigger: "axis",
@@ -107,8 +93,9 @@ export default {
         grid: {
           left: "3%",
           right: "4%",
-          bottom: "3%",
+          bottom: "10%",
           containLabel: true,
+          // y2: 350,
         },
         xAxis: [
           {
@@ -116,6 +103,10 @@ export default {
             data: [],
             axisTick: {
               alignWithLabel: true,
+            },
+            axisLabel: {
+              interval: 0,
+              rotate: -38,
             },
           },
         ],
@@ -137,6 +128,267 @@ export default {
           },
         ],
       },
+      demoBarOptions: {
+        xAxis: {
+          type: "category",
+          data: [
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+            "Mon123123213",
+            "Tue123123213",
+            "Wed123123213",
+            "Thu123123213",
+            "Fri123123213",
+            "Sat123123213",
+            "Sun123123213",
+          ],
+          axisLabel: {
+            interval: 0,
+            rotate: -38,
+          },
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+              120, 200, 150, 80, 70, 110, 130, 120, 200, 150, 80, 70, 110, 130,
+            ],
+            type: "bar",
+          },
+        ],
+        dataZoom: [
+          {
+            type: "slider",
+            show: true,
+            xAxisIndex: [0],
+            start: 0,
+            end: 15,
+            textStyle: {
+              color: "#ccd7d7",
+            },
+          },
+        ],
+        grid: {
+          y2: 150,
+        },
+      },
       lineOptions: {
         xAxis: {
           data: [],
@@ -157,9 +409,243 @@ export default {
         ],
         legend: {
           data: [],
+          formatter: (name) => {
+            if (name.length > 7) {
+              let res = name.slice(0, 7) + "...";
+              // console.log(res);
+              return res;
+            } else {
+              return name;
+            }
+            // console.log(params)
+          },
+          type: "scroll",
+          orient: "vertical",
+          right: 0,
+          top: 40,
+          bottom: 20,
         },
         tooltip: {
           trigger: "axis",
+          formatter: (params) => {
+            // console.log(params);
+            let res = params[0].axisValueLabel;
+            function getHtml(param) {
+              let str =
+                '<div style="float: left"><span style="background: ' +
+                param.color +
+                '; width: 11px; height: 11px; border-radius: 11px;float: left; margin: 5px 3px;"></span>' +
+                param.seriesName +
+                ":" +
+                param.data +
+                "&emsp;&emsp;</div>";
+              return str;
+            }
+            let flag = false;
+            res += '<div style="clear: both">';
+            for (let i = 0; i < params.length; i++) {
+              res += getHtml(params[i]);
+              if (params.length > 11 && i % 2 == 1) {
+                res += '</div><div style="clear: both">';
+              }
+              if (params.length <= 11) {
+                res += '</div><div style="clear: both">';
+              }
+            }
+            res += "</div>";
+            return res;
+          },
+        },
+      },
+      demoLineOptions: {
+        xAxis: {
+          data: ["A", "B", "C", "D", "E"],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "AA123123123AA123123123AA123123123AA123123123",
+            data: [10, 22, 28, 43, 49],
+            type: "line",
+          },
+          {
+            name: "中文文件名测试长度",
+            data: [5, 4, 3, 5, 10],
+            type: "line",
+          },
+          {
+            name: "CC",
+            data: [22, 28, 43, 49, 11],
+            type: "line",
+          },
+          {
+            name: "DD",
+            data: [3, 5, 10, 87, 3],
+            type: "line",
+          },
+          {
+            name: "EE",
+            data: [12, , 10, 22, 28, 43],
+            type: "line",
+          },
+          {
+            name: "FF",
+            data: [3, 5, 10, 87, 2],
+            type: "line",
+          },
+          {
+            name: "GG",
+            data: [22, 28, 43, 49, 23],
+            type: "line",
+          },
+          {
+            name: "HH",
+            data: [5, 4, 33, 5, 10],
+            type: "line",
+          },
+          {
+            name: "II",
+            data: [28, 22, 21, 43, 49],
+            type: "line",
+          },
+          {
+            name: "JJ",
+            data: [3, 5, 10, 6, 34],
+            type: "line",
+          },
+          {
+            name: "KK",
+            data: [43, 49, 34, 21, 44],
+            type: "line",
+          },
+          {
+            name: "LL",
+            data: [32, 21, 54, 23, 21],
+            type: "line",
+          },
+          {
+            name: "MM",
+            data: [28, 43, 49, 54, 67],
+            type: "line",
+          },
+          {
+            name: "NN",
+            data: [5, 12, 34, 5, 10],
+            type: "line",
+          },
+          {
+            name: "OO",
+            data: [43, 49, 54, 56, 87],
+            type: "line",
+          },
+          {
+            name: "PP",
+            data: [10, 34, 23, 54, 87],
+            type: "line",
+          },
+          {
+            name: "QQ",
+            data: [10, 22, 28, 37, 45],
+            type: "line",
+          },
+          {
+            name: "RR",
+            data: [5, 4, 3, 5, 10],
+            type: "line",
+          },
+          {
+            name: "SS",
+            data: [10, 66, 44, 33, 49],
+            type: "line",
+          },
+          {
+            name: "TT",
+            data: [23, 34, 12, 44, 10],
+            type: "line",
+          },
+          {
+            name: "UU",
+            data: [10, 22, 28, 43, 49],
+            type: "line",
+          },
+        ],
+        legend: {
+          formatter: (name) => {
+            if (name.length > 7) {
+              let res = name.slice(0, 7) + "...";
+              // console.log(res);
+              return res;
+            } else {
+              return name;
+            }
+            // console.log(params)
+          },
+          type: "scroll",
+          orient: "vertical",
+          right: 0,
+          top: 40,
+          bottom: 20,
+          data: [
+            "AA123123123AA123123123AA123123123AA123123123",
+            "中文文件名测试长度",
+            "CC",
+            "DD",
+            "EE",
+            "FF",
+            "GG",
+            "HH",
+            "II",
+            "JJ",
+            "KK",
+            "LL",
+            "MM",
+            "NN",
+            "OO",
+            "PP",
+            "QQ",
+            "RR",
+            "SS",
+            "TT",
+            "UU",
+          ],
+          // pageTextStyle: {
+          //   width: 10,
+          //   overflow: "truncate",
+          //   // color: '#333'
+          // },
+        },
+        tooltip: {
+          trigger: "axis",
+          formatter: (params) => {
+            // console.log(params);
+            let res = params[0].axisValueLabel;
+
+            function getHtml(param) {
+              let str =
+                '<div style="float: left"><span style="background: ' +
+                param.color +
+                '; width: 11px; height: 11px; border-radius: 11px;float: left; margin: 5px 3px;"></span>' +
+                param.seriesName +
+                ":" +
+                param.data +
+                "&emsp;&emsp;</div>";
+              return str;
+            }
+
+            let flag = false;
+            res += '<div style="clear: both">';
+            for (let i = 0; i < params.length; i++) {
+              res += getHtml(params[i]);
+              if (params.length > 11 && i % 2 == 1) {
+                res += '</div><div style="clear: both">';
+              }
+              if (params.length <= 11) {
+                res += '</div><div style="clear: both">';
+              }
+            }
+            res += "</div>";
+            return res;
+          },
         },
       },
       showLoadingA: true,
@@ -222,6 +708,8 @@ export default {
         //   // nums: 6,
         // },
       ],
+      counterChartAIns: {},
+      echartsAMounted: false,
     };
   },
   components: {
@@ -235,6 +723,20 @@ export default {
     this.getAlarmAdmin();
   },
   methods: {
+    refreshData() {
+      // console.log(hasValue);
+      if (this.echartsAMounted) {
+        this.showLoadingA = true;
+        this.getAllCounter();
+      }
+      if (this.echartsMounted) {
+        this.showLoadingB = true;
+        this.getCounterByDays();
+      }
+
+      this.alarmData = [];
+      this.getAlarmAdmin();
+    },
     collapse(value) {
       this.selectShow = value;
     },
@@ -247,14 +749,15 @@ export default {
       getAllCounter().then(
         (res) => {
           if (res.data) {
+            console.log(res);
             this.showLoadingA = false;
-            let xAxisData = this.getKeys(res.data);
-            let seriesData = this.getValues(res.data);
-            let number = 0;
-            seriesData.forEach((item) => {
-              number += item;
-            });
-            this.totalNumber = number;
+            let xAxisData = this.getKeys(res.data.data);
+            let seriesData = this.getValues(res.data.data);
+            // let number = 0;
+            // seriesData.forEach((item) => {
+            //   number += item;
+            // });
+            this.totalNumber = res.data.total;
             // console.log(number);
             // console.log(res.data);
             // this.$set(this.optionsAllCounter.xAxis[0], "data", xAxisData);
@@ -262,7 +765,32 @@ export default {
             this.optionsAllCounter.xAxis[0].data = xAxisData;
             this.optionsAllCounter.series[0].data = seriesData;
 
-            this.initChart("chartA", this.optionsAllCounter);
+            if (this.echartsAMounted) {
+              this.counterChartAIns.dispose();
+            }
+            // demoBarOptions
+            let dataZoom = {
+              type: "slider",
+              show: true,
+              xAxisIndex: [0],
+              start: 0,
+              end: 15,
+              textStyle: {
+                color: "#ccd7d7",
+              },
+            };
+
+            if (xAxisData.length > 20) {
+              this.optionsAllCounter.dataZoom.push(dataZoom);
+            }
+            this.counterChartAIns = this.initChart(
+              "chartA",
+              this.optionsAllCounter
+              // this.demoBarOptions
+            );
+            this.echartsAMounted = true;
+
+            // console.log(this.counterChartAIns);
           } else {
             this.$message({
               message: "获取数据失败",
@@ -300,7 +828,6 @@ export default {
                 name: legend[index],
                 data: this.getValues(item),
                 type: "line",
-                // stack: "x",
               });
             });
             // console.log(series) // 纵坐标
@@ -315,7 +842,34 @@ export default {
               this.echartsInstance.dispose();
             }
             // console.log(this.lineOptions);
-            this.echartsInstance = this.initChart("chartB", this.lineOptions);
+            let temp = [];
+            //这里的i++,换成了i=i+8,循环开始
+            // let arr = this.demoLineOptions.legend.data;
+            let arr = this.lineOptions.legend.data;
+            for (let i = 0; i < arr.length; i = i + 8) {
+              //当判断i+8是否小于总数组的长度时，成立了就从（i,i+8）开始截取保存到res数组中，其实就是截取数组的前8个对象
+              if (i + 8 < arr.length) {
+                temp.push(arr.slice(i, i + 8));
+              } else {
+                //这里长度不足8的对象也保存在res数组中，截取i的长度
+                temp.push(arr.slice(i));
+              }
+            }
+            temp.forEach(function (item) {
+              //八条对象的数组在后面添加你要添加的内容
+              return item.length === 8 ? item.push("") : item;
+            });
+            //这里定义一个空数组，并用apply指向这个空数组，concat将多个数组合并成一个数组
+            let result = [].concat.apply([], temp);
+            // console.log(result);
+            this.lineOptions.legend.data = result;
+
+            this.echartsInstance = this.initChart(
+              "chartB",
+              this.lineOptions
+              // this.demoLineOptions
+              // temp
+            );
             this.echartsMounted = true;
           } else {
             this.$message({
@@ -335,15 +889,11 @@ export default {
     },
     // 获取告警信息
     getAlarmAdmin() {
-      this.showLoadingC = true;
       getAlarmAdmin().then(
         (res) => {
-          this.showLoadingC = false;
           if (res.errcode == 200) {
-            // console.log(res.data);
             let keys = this.getKeys(res.data);
             let values = this.getValues(res.data);
-            // console.log(keys, values);
             keys.forEach((item, index) => {
               this.alarmData.push({
                 fileName: item + ": " + values[index] + "条",
@@ -376,48 +926,31 @@ export default {
     .total-number {
       display: flex;
       justify-content: space-between;
-      // font-family: electronicFont;
       font-size: 18px;
-      // float: right;
       .text-container {
         .text {
           font-size: 30px;
         }
       }
+    }
+  }
+  .alarm-container {
+    position: relative;
+    width: 100%;
+    .alarm-text {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 25px;
+    }
+    .item-container {
+      border-top: 1px solid rgba(128, 128, 128, 0.774);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.774);
+      .item {
+        display: inline-block;
+        width: calc(100% / 5);
 
-      .alarm-container {
-        position: relative;
-
-        // position: absolute;
-        // top: -20px;
-        // right: 0;
-        width: 40%;
-
-        .alarm-text {
-          // position: absolute;
-          margin-bottom: 10px;
-          text-align: center;
-          // font-weight: 500;
-          font-size: 25px;
-        }
-        .item-container {
-          border-top: 1px solid rgba(128, 128, 128, 0.774);
-          border-bottom: 1px solid rgba(128, 128, 128, 0.774);
-          .item {
-            display: inline-block;
-            width: calc(100% / 5);
-
-            padding: 10px 5px;
-            text-align: center;
-          }
-        }
-
-        // .td-table:first-child {
-        //   border-top: 1px solid rgba(128, 128, 128, 0.774);
-        // }
-        // .td-table:last-child {
-        //   border-bottom: 1px solid rgba(128, 128, 128, 0.774);
-        // }
+        padding: 10px 5px;
+        text-align: center;
       }
     }
     .charts-container {

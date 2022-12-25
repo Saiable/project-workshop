@@ -76,6 +76,7 @@ export default {
 <style lang="less" scoped>
 .container-page-card {
   box-shadow: 0px 0px 2px 1px rgba(95, 94, 94, 0.2);
+  margin-top: 20px;
   .header {
     height: 50px;
     line-height: 50px;
@@ -95,6 +96,7 @@ export default {
   .content {
     padding: 24px;
     background-color: #fff;
+    position: relative;
     .loading {
       margin-top: 70px;
       z-index: 99;

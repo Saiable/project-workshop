@@ -15,7 +15,7 @@ module.exports = defineConfig({
   //     }
   // },
   devServer: {
-    proxy: "http://localhost:9878/" //配置成最终要请求的服务器
+    proxy: "http://localhost:7430/" //配置成最终要请求的服务器
   }
 
 });

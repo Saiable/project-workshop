@@ -7,11 +7,17 @@ import "@/styles/index.less";
 import "@/utils/element.js";
 import "@/utils/echarts.js";
 import "@/utils/globalMixin.js";
+import {getServerConfig} from "@/utils/init.js";
 Vue.config.productionTip = false;
 require("@/utils/flexible.js");
+
 
 new Vue({
   router,
   store,
   render: (h) => h(App),
+  created() {
+    getServerConfig()
+  }
 }).$mount("#app");
+

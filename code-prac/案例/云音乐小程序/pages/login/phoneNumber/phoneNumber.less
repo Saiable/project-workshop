@@ -1,0 +1,83 @@
+/* pages/login/phoneNumber.wxss */
+@color-text-grey: #757575;
+@color-text-link: #4399fc;
+@text-normal: 40rpx;
+@text-middle: 28rpx;
+
+.phone-number-container {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 40rpx;
+
+    .des-a {
+        margin-top: 20rpx;
+        font-size: @text-normal;
+        letter-spacing: 4rpx;
+    }
+
+    .des-b {
+        margin-top: 20rpx;
+        font-size: @text-middle;
+        color: @color-text-grey;
+    }
+
+    .select-container {
+        margin-top: 80rpx;
+
+        .select {
+            display: inline-block;
+            width: 180rpx;
+            font-size: @text-middle;
+        }
+
+        .phone-number {
+            display: inline-block;
+            width: calc(100% - 180rpx);
+            font-size: @text-middle;
+        }
+
+        .pop-up {
+            position: relative;
+            // width: 100%;
+            // height: 500rpx;
+            .choose-text {
+                position: sticky;
+                top: 0;
+                z-index: 99;
+                background-color: #fff;
+                display: inline-block;
+                width: 100%;
+                height: 100rpx;
+                line-height: 100rpx;
+                padding-left: 20rpx;
+
+                .iconfont {
+                    font-size: 50rpx;
+                    display: inline-block;
+                    height: 100rpx;
+                    line-height: 100rpx;
+                    vertical-align: -0.15em;
+
+                }
+                // text-align: center;
+            }
+            .index-bar {
+                width: 100%;
+                // margin-right: 100rpx;
+                max-height: calc(100vh - 260rpx);
+            }
+        }
+
+    }
+
+    .next-step {
+        width: 100%;
+        height: 200rpx;
+        margin-top: 80rpx;
+    }
+
+    .find-account {
+        font-size: @text-middle;
+        color: @color-text-link;
+    }
+}

@@ -5,10 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  </head>
 
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #333;
+      }
+    </style>
   <body>
+    <pre class="prettyprint"></pre>
+    <!-- <script src="./var.js"></script> 
+    <script src="./let.js"></script>
+    <script>
+      let data = [
+        content_var,
+        content_let
+      ]
+      
+      function render(el, data) {
+        data.forEach(item => {
+          document.querySelector(el).innerHTML += item
+        })
+      }
+      render('.prettyprint', data)
 
-    <script src="./var.js"></script>
+    </script> -->
+    <script>
+      debugger;
+ // 虽然编译阶段age仍像var那样被提升了，但注意，人家var是被提到了距离最近的父级作用域上`Global`
+// 但是let声明的关键字是提升到了`Script`作用域里，与`Global`作用域平级
+// console.log(age)语句，查找age时，是在Global的作用域链里查找的，自然是找不到的
+      console.log(age)
+	
+      let age = 60;
+    </script>
   </body>
 </html>

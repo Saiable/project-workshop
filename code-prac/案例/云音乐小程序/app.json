@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/login/phoneNumber/phoneNumber",
+    "pages/login/login",
     "pages/index/index",
     "template/template01/template01",
     "pages/search/search",
-    "pages/login/login",
     "pages/video/video",
     "pages/personal/personal"
   ],
@@ -41,7 +42,6 @@
     "navigationBarTitleText": "云音乐",
     "navigationBarTextStyle": "white"
   },
-  "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "color": "#333",
@@ -67,5 +67,20 @@
         "selectedIconPath": "/static/myImages/tabs/tab-my-current.png"
       }
     ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cascader": "@vant/weapp/cascader/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index"
   }
 }

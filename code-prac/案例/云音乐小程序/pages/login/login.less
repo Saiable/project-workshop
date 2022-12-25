@@ -1,0 +1,138 @@
+/* pages/login/login.wxss */
+@color-text-grey: #757575;
+@color-text-link: #4399fc;
+@text-normal: 40rpx;
+@text-middle: 28rpx;
+.container {
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background-image: linear-gradient(rgb(255, 232, 236), white);
+
+    .experience {
+        position: absolute;
+        top: 40rpx;
+        right: 50rpx;
+        font-size: 30rpx;
+        color: @color-text-grey;
+    }
+
+    .logo {
+        position: relative;
+        width: 100%;
+        height: 500rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+
+        .iconfont {
+            font-size: 120rpx;
+            color: #d43c33;
+
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .circle-one {
+            width: 240rpx;
+            height: 240rpx;
+            border: 1px solid rgba(255, 200, 210, 0.788);
+
+        }
+
+        .circle-two {
+            width: 360rpx;
+            height: 360rpx;
+            border: 1px solid rgba(248, 213, 219, 0.856);
+        }
+
+        .circle-three {
+            width: 480rpx;
+            height: 480rpx;
+            border: 1px solid rgba(248, 220, 225, 0.925);
+        }
+
+    }
+
+    .phone-login {
+        width: 100%;
+        height: 500rpx;
+        position: relative;
+
+        .btn {
+            position: absolute;
+            width: 600rpx;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            .text {
+                font-size: @text-normal;
+            }
+        }
+
+        .check {
+            position: absolute;
+            top: 30%;
+            width: 600rpx;
+            font-size: @text-middle;
+            left: 50%;
+            transform: translateX(-50%);
+
+            .text {
+                color: @color-text-grey;
+
+            }
+
+            .text-link {
+                color: @color-text-link;
+            }
+        }
+    }
+
+    .action-sheet {
+        padding: 30rpx 60rpx;
+
+        .description {
+            margin-bottom: 40rpx;
+            font-size: @text-middle;
+
+            .text {
+                color: @color-text-grey;
+            }
+
+            .text-link {
+                color: @color-text-link;
+            }
+        }
+        .button {
+            .btn {
+                font-size: @text-normal;
+            }
+        }
+
+    }
+    .register-section {
+        position: absolute;
+        left: 0;
+        bottom: 50rpx;
+        width: 100%;
+        font-size: @text-middle;
+        color: @color-text-grey;
+        text-align: center;
+        .text {
+            color: @color-text-link;
+            margin-left: 10rpx;
+        }
+    }
+}
+
+
+
+    
+
+    
