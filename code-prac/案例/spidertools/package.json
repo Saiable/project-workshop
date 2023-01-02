@@ -1,0 +1,35 @@
+{
+  "name": "spidertools",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@codemirror/lang-python": "^6.0.1",
+    "@codemirror/theme-one-dark": "^6.0.0",
+    "@uiw/codemirror-theme-darcula": "^4.11.4",
+    "@uiw/codemirror-theme-github": "^4.11.4",
+    "axios": "^0.27.2",
+    "clipboard": "^2.0.11",
+    "codemirror": "^6.0.1",
+    "core-js": "^3.8.3",
+    "element-plus": "^2.2.13",
+    "uiw": "^4.21.14",
+    "vue": "^3.2.13",
+    "vue-codemirror": "^6.0.2",
+    "vue-json-viewer": "^3.0.4",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "less": "^4.0.0",
+    "less-loader": "^8.0.0"
+  }
+}

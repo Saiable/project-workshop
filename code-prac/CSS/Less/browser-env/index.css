@@ -1,0 +1,8 @@
+#wrap .arrow {
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+  border-width: 40px;
+  border-style: dashed dashed solid dashed;
+  border-color: transparent transparent red transparent;
+}
