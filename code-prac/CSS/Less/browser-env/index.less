@@ -1,7 +1,27 @@
-@import url('./triangle.less');
+.x {
+  .m(red) {
+    case: darkred;
+  }
+  .m(@x) when (iscolor(@x)) and (default()) {
+    default-color: @x;
+  }
+  .m("foo") {
+    case: I am "foo";
+  }
+  .m(@x) when (isstring(@x)) and (default()) {
+    default-string: and I am the default;
+  }
 
-#wrap {
-    .arrow {
-        .triangle(Top, red, 40px);
-    }
+  &-blue {
+    .m(red);
+  }
+  &-green {
+    .m(green);
+  }
+  &-foo {
+    .m("foo");
+  }
+  &-baz {
+    .m("baz");
+  }
 }

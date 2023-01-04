@@ -1,8 +1,12 @@
-#wrap .arrow {
-  width: 0px;
-  height: 0px;
-  overflow: hidden;
-  border-width: 40px;
-  border-style: dashed dashed solid dashed;
-  border-color: transparent transparent red transparent;
+.x-blue {
+  case: darkred;
+}
+.x-green {
+  default-color: green;
+}
+.x-foo {
+  case: I am "foo";
+}
+.x-baz {
+  default-string: and I am the default;
 }
