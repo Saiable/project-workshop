@@ -1,27 +1,5 @@
-.x {
-  .m(red) {
-    case: darkred;
-  }
-  .m(@x) when (iscolor(@x)) and (default()) {
-    default-color: @x;
-  }
-  .m("foo") {
-    case: I am "foo";
-  }
-  .m(@x) when (isstring(@x)) and (default()) {
-    default-string: and I am the default;
-  }
-
-  &-blue {
-    .m(red);
-  }
-  &-green {
-    .m(green);
-  }
-  &-foo {
-    .m("foo");
-  }
-  &-baz {
-    .m("baz");
-  }
-}
+offset.col-xs-offset-12{right:12/12}
+.col-xs-offset-11{right:11/12}
+......
+.col-xs-offset-1{right:1/12}
+.col-xs-offset-0{right:0}
