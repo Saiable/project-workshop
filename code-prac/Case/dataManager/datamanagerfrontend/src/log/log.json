@@ -1,0 +1,47 @@
+[
+    {
+        "id": "001",
+        "task": "nanshui_bid",
+        "tagPath": "http://218.94.82.249:8094/index.xhtml#/",
+        "dataPath": "/data/data01/brat/brat/data/nanshui_bid",
+        "desc": "南水股份的招投标表标注数据",
+        "tool": "brat",
+        "backup": {
+            "date": "2023-1-6",
+            "ip": "218.94.82.249",
+            "port": "7687",
+            "fileName": "nanshui_bid_bak.tar",
+            "path": "/data/data01/tag_data_backup"
+        }
+    },
+    {
+        "id": "002",
+        "task": "doc_struc_parse",
+        "tagPath": "http://218.94.82.249:8094/index.xhtml#/",
+        "dataPath": "/data/data01/brat/brat/data/doc_struc_parse",
+        "desc": "建筑工程合同，长文本解析",
+        "tool": "brat",
+        "backup": {
+            "date": "2023-1-6",
+            "ip": "218.94.82.249",
+            "port": "7687",
+            "fileName": "nanshui_bid_bak.tar",
+            "path": "/data/data01/tag_data_backup"
+        }
+    },
+    {
+        "id": "003",
+        "task": "合同-01",
+        "tagPath": "http://10.45.150.74:8082/projects/7/data?tab=6",
+        "dataPath": "",
+        "desc": "情报所合同文件完整数据，没有“金额”字段",
+        "tool": "labelStudio",
+        "backup": {
+            "date": "2023-1-6",
+            "ip": "10.45.150.74",
+            "port": "8082",
+            "fileName": "project-7-合同-01.json",
+            "path": "localDisk"
+        }
+    }
+]
