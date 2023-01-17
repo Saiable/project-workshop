@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <!-- 核心库要先引入 -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <!-- type类型要写babel -->
+  <script type="text/babel">
+    // 1.创建类式组件，必须要继承React.Component
+    class Demo extends React.Component {
+      state = {
+        isHot: false
+      }
+      // 函数写在class里面，通过this调用
+
+      demo = () => {
+        // console.log('标题被点击了')
+        const { isHot } = this.state
+        this.setState({
+          isHot: !isHot
+        })
+        console.log('demo callback')
+      }
+
+      render() { // 必须要有render函数
+        console.log(this)
+        console.log('render')
+        const { isHot } = this.state
+        return <h2 onClick={this.demo}>今天天气很{isHot ? '炎热' : '凉爽'}</h2>
+      }
+    }
+    // 2.渲染组件到页面
+    const container = document.querySelector("#test");
+    const root = ReactDOM.createRoot(container);
+    root.render(<Demo />); // 这里的render和上面的render没有任何关系，只是重名
+  </script>
+</body>
+
+</html>

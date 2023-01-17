@@ -4,4 +4,5 @@ import router from './router'
 import store from './store'
 
 import '@/utils/flexible.js'
+import '@/styles/index.scss'
 createApp(App).use(store).use(router).mount('#app')

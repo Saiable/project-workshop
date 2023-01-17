@@ -1,13 +1,20 @@
 <template>
-  <div>个人中心</div>
+  <div class="mine">
+    <div class="content">content</div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.mine {
+  display: flex;
+  height: 100%;
+  .content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
 </style>

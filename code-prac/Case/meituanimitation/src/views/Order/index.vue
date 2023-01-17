@@ -1,13 +1,20 @@
 <template>
-  <div>订单</div>
+  <div class="order">
+    <div class="content">content</div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.order {
+  display: flex;
+  height: 100%;
+  .content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
 </style>

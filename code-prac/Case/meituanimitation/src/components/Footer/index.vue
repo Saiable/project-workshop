@@ -1,35 +1,21 @@
 <template>
-  <div>
-    <div>
-      <router-link to="/home">
-        <van-icon name="wap-home-o" />
-        首页
-      </router-link>
-    </div>
-    <div>
-      <router-link to="/cart">
-        <van-icon name="shopping-cart-o" />
-        购物车
-      </router-link>
-    </div>
-    <div>
-      <router-link to="/order">
-        <van-icon name="coupon-o" />
-        订单
-      </router-link>
-    </div>
-    <div>
-      <router-link to="/mine">
-        <van-icon name="manager-o" />
-        我的
-      </router-link>
-    </div>
-  </div>
+  <van-tabbar v-model="active" active-color="#ffc400">
+    <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
+    <van-tabbar-item replace to="/cart" icon="shopping-cart-o">购物车</van-tabbar-item>
+    <van-tabbar-item replace to="/order" icon="coupon-o">订单</van-tabbar-item>
+    <van-tabbar-item replace to="/mine" icon="manager-o">我的</van-tabbar-item>
+  </van-tabbar>
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+export default {
+  setup() {
+    const active = ref(0);
+    return { active };
+  },
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
 </style>

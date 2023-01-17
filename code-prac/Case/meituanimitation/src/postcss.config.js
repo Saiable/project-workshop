@@ -5,7 +5,7 @@ const px2rem = require('postcss-pxtorem');
 
 module.exports = {
     plugins: [autoprefixer(), px2rem({ 
-        rootValue: 16, // 
+        rootValue: 37.5,
         unitPrecision: 5, 
         propList: ['*'],
         exclude: /node_modules/

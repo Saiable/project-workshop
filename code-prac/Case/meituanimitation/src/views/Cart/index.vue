@@ -1,13 +1,20 @@
 <template>
-  <div>购物车</div>
+  <div class="cart">
+    <div class="content">content</div>
+  </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.cart {
+  display: flex;
+  height: 100%;
+  .content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
 </style>

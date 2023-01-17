@@ -17,15 +17,16 @@
     {
         "id": "002",
         "task": "doc_struc_parse",
+        "frequency": "2",
         "tagPath": "http://218.94.82.249:8094/index.xhtml#/",
         "dataPath": "/data/data01/brat/brat/data/doc_struc_parse",
-        "desc": "建筑工程合同，长文本解析",
+        "desc": "建筑工程合同，长文本解析。第一批标了所有的标签都标注了。第二批只标标题和负例，剩余默认为正文，但存在一个问题，算法在还原文本时，offset存在一定的偏差，和brat平台有关",
         "tool": "brat",
         "backup": {
             "date": "2023-1-6",
             "ip": "218.94.82.249",
             "port": "7687",
-            "fileName": "nanshui_bid_bak.tar",
+            "fileName": "doc_struc_parse_bak_02.tar",
             "path": "/data/data01/tag_data_backup"
         }
     },
@@ -40,8 +41,53 @@
             "date": "2023-1-6",
             "ip": "10.45.150.74",
             "port": "8082",
+            "fileName": "情报所合同文件-标注结果_bak.json",
+            "path": "/data/data01/tag_data_backup"
+        }
+    },
+    {
+        "id": "004",
+        "task": "",
+        "tagPath": "http://10.45.150.74:8082/projects/7/data?tab=6",
+        "dataPath": "",
+        "desc": "情报所合同文件完整数据，没有“金额”字段",
+        "tool": "labelStudio",
+        "backup": {
+            "date": "2023-1-6",
+            "ip": "10.45.150.74",
+            "port": "8082",
             "fileName": "project-7-合同-01.json",
             "path": "localDisk"
+        }
+    },
+    {
+        "id": "005",
+        "task": "合同-OCR",
+        "tagPath": "http://10.45.150.74:8082/projects/41/data",
+        "dataPath": "本地路径：/标注/合同/合同-ocr结果",
+        "desc": "数据源在本地。由pdf合同OCR出来txt进行标注。问题：里面识别的格式有点乱",
+        "tool": "labelStudio",
+        "backup": {
+            "date": "2023-1-11",
+            "ip": "218.94.82.249",
+            "port": "7687",
+            "fileName": "合同-OCR-标注结果_bak.json",
+            "path": "/data/data01/tag_data_backup"
+        }
+    },
+    {
+        "id": "006",
+        "task": "图表标注",
+        "tagPath": "http://10.45.150.74:8082/projects/43/data?tab=85",
+        "dataPath": "本地路径：/标注/图表/图表标注语料",
+        "desc": "文本、图、图标题、表、表标题、页眉、页脚、手写、盖章。文本是指每个小段落，每个小标题；页眉、页脚单独的算一个，不要一起",
+        "tool": "labelStudio",
+        "backup": {
+            "date": "2023-1-11",
+            "ip": "218.94.82.249",
+            "port": "7687",
+            "fileName": "图表标注-新规则-标注结果_bak.json",
+            "path": "/data/data01/tag_data_backup"
         }
     }
 ]
