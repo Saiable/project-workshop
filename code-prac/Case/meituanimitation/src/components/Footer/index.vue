@@ -1,5 +1,5 @@
 <template>
-  <van-tabbar v-model="active" active-color="#ffc400">
+  <van-tabbar v-model="active" active-color="#ffc400" route>
     <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
     <van-tabbar-item replace to="/cart" icon="shopping-cart-o">购物车</van-tabbar-item>
     <van-tabbar-item replace to="/order" icon="coupon-o">订单</van-tabbar-item>

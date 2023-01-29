@@ -27,8 +27,23 @@ const routes = [
   },
   {
     path: '/store',
-    name: 'ordestorer',
+    name: 'store',
     component: () => import('@/views/Store/index.vue')
+  },
+  {
+    path: '/createOrder',
+    name: 'createOrder',
+    component: () => import('@/views/createOrder/index.vue')
+  },
+  {
+    path: '/address',
+    name: 'address',
+    component: () => import('@/views/Address/index.vue')
+  },
+  {
+    path: '/editaddress',
+    name: 'editaddress',
+    component: () => import('@/views/editAddress/index.vue')
   },
 ]
 

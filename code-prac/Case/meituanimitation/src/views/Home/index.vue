@@ -47,12 +47,15 @@
         </van-tabs>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import { reactive, toRefs, ref } from "vue";
 import NavList from "./components/NavList.vue";
+import Footer from "@/components/Footer/index.vue";
+
 export default {
   setup() {
     const tabActive = ref(0);
@@ -189,6 +192,7 @@ export default {
   },
   components: {
     NavList,
+    Footer,
   },
 };
 </script>
