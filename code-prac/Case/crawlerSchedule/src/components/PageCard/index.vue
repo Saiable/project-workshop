@@ -17,7 +17,7 @@
     </div>
     <div
       class="content"
-      :style="{ height: this.height + 'px', display: this.dataDisplay }"
+      :style="{ height: this.height + 'px', display: this.dataDisplay, marginTop: this.marginTop + 'px' }"
     >
     <!-- 不能用v-if-else,否则echarts对应的dom还未生成就实例化了 -->
       <div class="loading" v-show="showloading"></div>
@@ -49,6 +49,9 @@ export default {
       type: Boolean,
     },
     height: {
+      type: Number | String,
+    },
+    marginTop: {
       type: Number | String,
     },
     display: {
@@ -106,5 +109,6 @@ export default {
       height: 100%;
     }
   }
+
 }
 </style>

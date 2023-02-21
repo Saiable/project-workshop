@@ -98,6 +98,7 @@
               <el-table-column
                 prop="job_chinese_name"
                 label="任务中文名"
+                sortable
               ></el-table-column>
               <el-table-column
                 prop="executor"
@@ -108,12 +109,23 @@
                 label="下轮运行时间"
                 sortable
               ></el-table-column>
-              <el-table-column prop="is_running" label="运行状态">
+              <el-table-column prop="is_running" label="运行状态" sortable>
                 <template slot-scope="scope">
                   <i
                     class="iconfont icon-pachong"
                     :style="{
                       color: scope.row.is_running ? '#5cb85c' : '#d9534f',
+                      fontSize: '20px',
+                    }"
+                  ></i>
+                </template>
+              </el-table-column>
+              <el-table-column prop="is_scheduling" label="调度状态" sortable>
+                <template slot-scope="scope">
+                  <i
+                      class="iconfont icon-renwutiaodu"
+                      :style="{
+                      color: scope.row.is_scheduling ? '#ccb84c' : '#8c8383',
                       fontSize: '20px',
                     }"
                   ></i>

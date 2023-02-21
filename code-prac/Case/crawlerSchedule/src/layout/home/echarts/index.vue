@@ -53,13 +53,19 @@
             </el-option>
           </el-select>
         </div>
+
+        <div class="lengend-select" v-show="selectShow">
+          <button @click="selectAllLengend" class="btn">全（不）选</button>
+        </div>
         <PageCard
-          iconfontL="icon-tubiao-zhuzhuangtu"
-          name="单个爬虫数量"
-          class="charts-container"
-          :showloading="showLoadingB"
-          :height="500"
-          @collapse="collapse"
+            iconfontL="icon-tubiao-zhuzhuangtu"
+            name="单个爬虫数量"
+            class="charts-container"
+            :showloading="showLoadingB"
+            :height="defaultHeight"
+            :marginTop="40"
+            @collapse="collapse"
+
         >
           <div slot="chart" class="chart" ref="chartB"></div>
         </PageCard>
@@ -392,6 +398,13 @@ export default {
       lineOptions: {
         xAxis: {
           data: [],
+          axisTick: {
+            alignWithLabel: true,
+          },
+          axisLabel: {
+            interval: 0,
+            rotate: -38,
+          },
           // data: ["A", "B", "C", "D", "E"],
         },
         yAxis: {},
@@ -409,26 +422,29 @@ export default {
         ],
         legend: {
           data: [],
-          formatter: (name) => {
-            if (name.length > 7) {
-              let res = name.slice(0, 7) + "...";
-              // console.log(res);
-              return res;
-            } else {
-              return name;
-            }
-            // console.log(params)
-          },
-          type: "scroll",
-          orient: "vertical",
-          right: 0,
-          top: 40,
-          bottom: 20,
+          // top: 50,
+          // bottom: 30,
+          // formatter: (name) => {
+          //   if (name.length > 7) {
+          //     let res = name.slice(0, 7) + "...";
+          //     // console.log(res);
+          //     return res;
+          //   } else {
+          //     return name;
+          //   }
+          //   // console.log(params)
+          // },
+          // type: "scroll",
+          // orient: "vertical",
+          // right: 0,
+          // top: 40,
+          // bottom: 20,
         },
         tooltip: {
           trigger: "axis",
           formatter: (params) => {
-            // console.log(params);
+            // console.log(params[0]);
+
             let res = params[0].axisValueLabel;
             function getHtml(param) {
               let str =
@@ -438,14 +454,14 @@ export default {
                 param.seriesName +
                 ":" +
                 param.data +
-                "&emsp;&emsp;</div>";
+                "&emsp;</div>";
               return str;
             }
             let flag = false;
             res += '<div style="clear: both">';
             for (let i = 0; i < params.length; i++) {
               res += getHtml(params[i]);
-              if (params.length > 11 && i % 2 == 1) {
+              if (params.length > 11 && i % 3 == 1) {
                 res += '</div><div style="clear: both">';
               }
               if (params.length <= 11) {
@@ -453,13 +469,20 @@ export default {
               }
             }
             res += "</div>";
+            // console.log(res)
             return res;
           },
+        },
+        grid: {
+          // top: "70%",
         },
       },
       demoLineOptions: {
         xAxis: {
           data: ["A", "B", "C", "D", "E"],
+        },
+        grid: {
+          // top: 130,
         },
         yAxis: {},
         series: [
@@ -570,21 +593,21 @@ export default {
           },
         ],
         legend: {
-          formatter: (name) => {
-            if (name.length > 7) {
-              let res = name.slice(0, 7) + "...";
-              // console.log(res);
-              return res;
-            } else {
-              return name;
-            }
-            // console.log(params)
-          },
-          type: "scroll",
-          orient: "vertical",
-          right: 0,
+          // formatter: (name) => {
+          //   if (name.length > 7) {
+          //     let res = name.slice(0, 7) + "...";
+          //     // console.log(res);
+          //     return res;
+          //   } else {
+          //     return name;
+          //   }
+          //   // console.log(params)
+          // },
+          // type: "scroll",
+          // orient: "vertical",
+          // right: 0,
           top: 40,
-          bottom: 20,
+          // bottom: 20,
           data: [
             "AA123123123AA123123123AA123123123AA123123123",
             "中文文件名测试长度",
@@ -710,6 +733,8 @@ export default {
       ],
       counterChartAIns: {},
       echartsAMounted: false,
+      lengendSelected: false,
+      defaultHeight: 500,
     };
   },
   components: {
@@ -723,6 +748,27 @@ export default {
     this.getAlarmAdmin();
   },
   methods: {
+    selectAllLengend() {
+      this.lengendSelected = !this.lengendSelected;
+      let echartIns = this.echartsInstance;
+      // let options = this.lineOptions;
+      let selectArr = echartIns.getOption().legend[0].data;
+      // console.log(selectArr)
+      // if (this.echartsMounted) {
+
+      // } else {
+      // }
+      // echatIns.dispose()
+      // echartIns.setOption
+      let obj = {};
+      for (let key in selectArr) {
+        obj[selectArr[key]] = !this.lengendSelected;
+      }
+      console.log(obj);
+      this.lineOptions.legend.selected = obj;
+      // console.log(this.lineOptions)
+      echartIns.setOption(this.lineOptions);
+    },
     refreshData() {
       // console.log(hasValue);
       if (this.echartsAMounted) {
@@ -749,7 +795,7 @@ export default {
       getAllCounter().then(
         (res) => {
           if (res.data) {
-            console.log(res);
+            // console.log(res);
             this.showLoadingA = false;
             let xAxisData = this.getKeys(res.data.data);
             let seriesData = this.getValues(res.data.data);
@@ -837,40 +883,59 @@ export default {
             this.lineOptions.xAxis.data = xAxisData;
             this.lineOptions.series = series;
             this.lineOptions.legend.data = legend;
+            // 切换时未重置全选状态
 
             if (this.echartsMounted) {
               this.echartsInstance.dispose();
             }
             // console.log(this.lineOptions);
-            let temp = [];
-            //这里的i++,换成了i=i+8,循环开始
-            // let arr = this.demoLineOptions.legend.data;
-            let arr = this.lineOptions.legend.data;
-            for (let i = 0; i < arr.length; i = i + 8) {
-              //当判断i+8是否小于总数组的长度时，成立了就从（i,i+8）开始截取保存到res数组中，其实就是截取数组的前8个对象
-              if (i + 8 < arr.length) {
-                temp.push(arr.slice(i, i + 8));
-              } else {
-                //这里长度不足8的对象也保存在res数组中，截取i的长度
-                temp.push(arr.slice(i));
-              }
-            }
-            temp.forEach(function (item) {
-              //八条对象的数组在后面添加你要添加的内容
-              return item.length === 8 ? item.push("") : item;
-            });
-            //这里定义一个空数组，并用apply指向这个空数组，concat将多个数组合并成一个数组
-            let result = [].concat.apply([], temp);
+            // let temp = [];
+            // //这里的i++,换成了i=i+8,循环开始
+            // // let arr = this.demoLineOptions.legend.data;
+            // let arr = this.lineOptions.legend.data;
+            // for (let i = 0; i < arr.length; i = i + 8) {
+            //   //当判断i+8是否小于总数组的长度时，成立了就从（i,i+8）开始截取保存到res数组中，其实就是截取数组的前8个对象
+            //   if (i + 8 < arr.length) {
+            //     temp.push(arr.slice(i, i + 8));
+            //   } else {
+            //     //这里长度不足8的对象也保存在res数组中，截取i的长度
+            //     temp.push(arr.slice(i));
+            //   }
+            // }
+            // temp.forEach(function (item) {
+            //   //八条对象的数组在后面添加你要添加的内容
+            //   return item.length === 8 ? item.push("") : item;
+            // });
+            // //这里定义一个空数组，并用apply指向这个空数组，concat将多个数组合并成一个数组
+            // let result = [].concat.apply([], temp);
             // console.log(result);
-            this.lineOptions.legend.data = result;
 
-            this.echartsInstance = this.initChart(
-              "chartB",
-              this.lineOptions
-              // this.demoLineOptions
-              // temp
-            );
-            this.echartsMounted = true;
+
+            // this.lineOptions.legend.data = result;
+// echart 修改grid.top值
+            let gridTopRes = this.getGridByHeight(legend)
+
+            this.defaultHeight = 500 +  (50 *  gridTopRes[0])
+            this.lineOptions.grid.top = gridTopRes[1]
+            console.log(gridTopRes)
+            // this.lineOptions.grid.top = '5%'
+
+
+            // let temp = this.getGridByHeight(legend)
+            // console.log(temp)
+
+            setTimeout(() => {
+              this.echartsInstance = this.initChart(
+                  "chartB",
+                  this.lineOptions
+                  // this.demoLineOptions
+                  // temp
+              );
+              this.echartsMounted = true;
+
+            }, 0)
+            // let options = this.echartsInstance.getOption()
+            // console.log(options)
           } else {
             this.$message({
               message: "获取数据失败",
@@ -955,7 +1020,7 @@ export default {
     }
     .charts-container {
       position: relative;
-      margin-top: 24px;
+      margin-top: 60px;
     }
   }
   .chart {
@@ -970,6 +1035,25 @@ export default {
       right: 18px;
       z-index: 99;
     }
+    .lengend-select {
+      position: absolute;
+      top: 70px;
+      right: 290px;
+      z-index: 99;
+      .btn {
+        
+        width: 150px;
+        height: 40px;
+        line-height: 40px;
+        border: none;
+        border-radius: 3px;
+        border: 1px solid #3383da;
+        color: #fff;
+        cursor: pointer;
+        background-color: #3383da;
+      }
+    }
+
   }
 }
 </style>

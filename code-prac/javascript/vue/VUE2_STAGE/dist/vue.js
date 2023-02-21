@@ -212,6 +212,10 @@
       console.log('开始标签', tag, attrs);
     }
 
+    function chars(text) {
+      console.log('文本', text);
+    }
+
     function end(tag) {
       console.log('结束标签', tag);
     }
@@ -292,7 +296,7 @@
         var text = html.substring(0, textEnd); // 文本内容
 
         if (text) {
-          char(text);
+          chars(text);
           advance(text.length); // console.log(html)
         }
       }

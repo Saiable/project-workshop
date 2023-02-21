@@ -89,5 +89,20 @@
             "fileName": "图表标注-新规则-标注结果_bak.json",
             "path": "/data/data01/tag_data_backup"
         }
+    },
+    {
+        "id": "007",
+        "task": "知网文章采集",
+        "tagPath": "",
+        "dataPath": "本地路径：/标注/图表/图表标注语料",
+        "desc": "见《知网文章采集需求》.docx",
+        "tool": "爬虫半自动化采集",
+        "backup": {
+            "date": "",
+            "ip": "218.94.82.249",
+            "port": "7687",
+            "fileName": "",
+            "path": "/data/data01/tag_data_backup"
+        }
     }
 ]

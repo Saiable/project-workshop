@@ -84,7 +84,7 @@ function parsetHTML(html) {// 每解析一个标签，就把它从字符串中�
         if(textEnd >= 0) { // 解析到的文本
             let text = html.substring(0, textEnd) // 文本内容
             if(text) {
-                char(text)
+                chars(text)
                 advance(text.length)
                 // console.log(html)
             }
