@@ -1,0 +1,8 @@
+
+/*给样式同时解决了，天气、日历切换时的视差问题，类名只能加在transistion里面的div*/
+.my-weather {
+  position: absolute;
+  background-color: rgba(255, 255, 255, .2);
+  box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+  border-radius: 15px;
+}

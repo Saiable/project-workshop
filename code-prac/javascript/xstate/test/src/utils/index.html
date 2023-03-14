@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
+
+</head>
+
+<body>
+    <script>
+        const {
+            createMachine,
+            actions,
+            interpret
+        } = XState;
+        const promiseMachine = createMachine({
+            id: "promise",
+            initial: "pendding",
+            states: {
+                pendding: {
+                    on: {
+                        RESOLVE: {
+                            target: "resolved"
+                        },
+                        REJECT: {
+                            target: "rejected"
+                        },
+                    },
+                },
+                resolved: {
+                    type: "final"
+                },
+                rejected: {
+                    type: "final"
+                },
+            },
+        });
+        const {
+            initialState
+        } = promiseMachine
+        console.log(initialState.changed)
+        const nextState = promiseMachine.transition(initialState, {
+            type: 'RESOLVE'
+        })
+        console.log(nextState.changed)
+
+        // const promiseService = interpret(promiseMachine).onTransition(state => {
+        //     console.log(state.value);
+        // });
+
+        // promiseService.start();
+
+        // promiseService.send({
+        //     type: 'RESOLVE'
+        // });
+        // const mouseMachine = createMachine({
+        //     on: {
+        //         mousemove: {
+        //             actions: [
+        //                 (context, event) => {
+        //                     const {
+        //                         offsetX,
+        //                         offsetY
+        //                     } = event;
+        //                     console.log({
+        //                         offsetX,
+        //                         offsetY
+        //                     });
+        //                 }
+        //             ]
+        //         }
+        //     }
+        // });
+        // const mouseService = interpret(mouseMachine).start();
+
+        // window.addEventListener('mousemove', (event) => {
+        //     // 事件可以直接发送到服务
+        //     mouseService.send(event);
+        // });
+        const isAdult = ({
+            age
+        }) => age >= 18;
+        const isMinor = ({
+            age
+        }) => age < 18;
+
+        const ageMachine = createMachine({
+            id: 'age',
+            context: {
+                age: undefined
+            }, // age 不知道
+            initial: 'unknown',
+            states: {
+                unknown: {
+                    on: {
+                        // 当满足 cond 条件时，立即 转换。 否则，不会发生 转换
+                        '': [{
+                                target: 'adult',
+                                cond: isAdult
+                            },
+                            {
+                                target: 'child',
+                                cond: isMinor
+                            }
+                        ]
+                    }
+                },
+                adult: {
+                    type: 'final'
+                },
+                child: {
+                    type: 'final'
+                }
+            }
+        });
+
+        console.log(ageMachine.initialState.value);
+        // => 'unknown'
+
+        const personData = {
+            age: 28
+        };
+
+        const personMachine = ageMachine.withContext(personData);
+
+        console.log(personMachine.initialState.value);
+        // => 'adult'
+    </script>
+</body>
+
+</html>

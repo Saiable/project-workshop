@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+
+
+/* utils stylesheet */
+@import "./utils/normalize.css";
+@import "./utils/base.css";
+/*@import "./utils/color-theme.css";*/
+/*@import "./utils/element-ui.css";*/
+
+/* views stylesheet */
+/*home*/
+@import "./views/home/background.css";
+@import "./views/home/time.css";
+@import "./views/home/cover.css";
+@import "./views/home/context-menu.css";
+
+@import "./views/home/avator-button.css";
+@import "./views/home/motto.css";
+/*login*/
+@import "./views/login/login.css";
+/*userinfo*/
+/*@import "./views/userinfo/userinfo.css";*/
+
+/*components stylesheet*/
+@import "./components/my-calendar.css";
+@import "./components/my-weather.css";
+
+/*icon*/
+/* @import "../assets/aliIconfont/iconfont.css"; */
+@import url('https://at.alicdn.com/t/font_3135553_dtsihgkgrr.css');
+
+
+@import "./utils/my-element-ui.css";
+
+
+
+
+

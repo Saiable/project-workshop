@@ -1,0 +1,138 @@
+@charset "UTF-8";
+.classbody {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  background-color: #e9e9e9;
+  /* background: url(); */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+.switch-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 30rem;
+  height: 15rem;
+  border-radius: 1rem;
+  background-color: rgba(255,255,255, .2);
+
+  box-shadow: 3px 3px 10px rgba(0,0,0,.1);
+}
+
+.switch {
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+.go-back {
+  display: inline;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.go-back:hover {
+  color: #3a8ee6;
+
+  cursor: pointer;
+}
+
+div.go-back .iconfont {
+  font-size: 24px;
+  color: #525252;
+}
+div.go-back .iconfont:hover {
+  color: #3a8ee6;
+}
+
+.more-settings {
+  font-size: 12px;
+  text-decoration: underline;
+  color: #1265c1;
+  cursor: pointer;
+}
+
+.more-settings:hover {
+  color: #3a8ee6;
+
+}
+.engine-settings-outer {
+  margin-left: 52px;
+}
+
+/*修改搜索引擎开始*/
+
+.add-engine {
+  position: absolute;
+  top: 20px;
+  right: 61px;
+  cursor: pointer;
+}
+.add-engine:hover {
+  color: #4f90ff;
+}
+
+span.engine-icon-outer img, .icon-img img{
+  width: 15px;
+  height: 15px;
+}
+.custom-content .img-outer {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+img.person-engine-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+}
+span.modify-engine {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  font-size: 35px;
+}
+span.modify-engine:hover{
+  color: #409EFF;
+}
+.modify-engine-outer {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  /*background-color: #1F8BFF;*/
+  border-radius: 5px;
+  padding-left: 1px;
+}
+ul.modify-engine-item {
+  list-style: none;
+}
+ul.modify-engine-item li {
+  box-sizing: border-box;
+  padding: 5px 0;
+  text-align: center;
+  cursor: pointer;
+}
+
+ul.modify-engine-item li:hover {
+  color: #409EFF;
+}
+
+
+/*修改搜素引擎结束*/
+
