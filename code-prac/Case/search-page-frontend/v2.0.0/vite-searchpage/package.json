@@ -1,0 +1,32 @@
+{
+  "name": "vite-searchpage",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@xstate/vue": "^2.0.0",
+    "axios": "^1.3.4",
+    "element-plus": "^2.3.0",
+    "normalize.css": "^8.0.1",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
+    "xstate": "^4.37.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "amfe-flexible": "^2.2.1",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-pxtorem": "^6.0.0",
+    "sass": "^1.59.3",
+    "unplugin-auto-import": "^0.15.1",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.1.0",
+    "vite-plugin-vue-setup-extend": "^0.4.0"
+  }
+}

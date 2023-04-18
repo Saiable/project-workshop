@@ -1,0 +1,137 @@
+/* loading */
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:before,
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: '';
+    }
+
+    &:before {
+        margin: -48px 0 0 -25px;
+        width: 50px;
+        height: 50px;
+        background: url('../assets/loading.svg') no-repeat center center;
+        background-size: 100% 100%;
+        animation: loadingMove 2s linear 0s infinite;
+    }
+
+    &:after {
+        content: '加载中...';
+        margin: 8px 0 0 -120px;
+        width: 240px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 12px;
+        color: #676767;
+    }
+
+    @keyframes loadingMove {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
+
+
+.z-minus-100 {
+    z-index: -100;
+}
+
+.z-100 {
+    z-index: 100;
+}
+
+.z-200 {
+    z-index: 200;
+}
+
+.z-300 {
+    z-index: 300;
+}
+
+.z-400 {
+    z-index: 400;
+}
+
+.z-500 {
+    z-index: 500;
+}
+
+.z-600 {
+    z-index: 600;
+}
+
+.z-700 {
+    z-index: 700;
+}
+
+.z-800 {
+    z-index: 800;
+}
+
+.z-900 {
+    z-index: 900;
+}
+
+.z-1000 {
+    z-index: 1000;
+}
+
+.shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.fixed-center {
+    position: fixed !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rounded {
+    border-radius: 4px;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+.size-100 {
+    width: 100%;
+    height: 100%;
+}

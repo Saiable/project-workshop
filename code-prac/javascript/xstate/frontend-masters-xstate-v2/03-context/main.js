@@ -10,8 +10,13 @@ const playerMachine = createMachine({
   context: {
     // Add initial context here for:
     // title, artist, duration, elapsed, likeStatus, volume
-    count: 42
-
+    count: 42,
+    title: undefined,
+    artist: undefined,
+    duration: 0,
+    elapsed: 0, 
+    likeStatus: 'unliked',
+    volume: 5
   },
   states: {
     loading: {
@@ -79,6 +84,11 @@ const playerMachine = createMachine({
       //   }
       // }
       // Also, reset the `elapsed` and `likeStatus` values.
+      title: (context, event) => event.data.title,
+      artist: (context, event) => event.data.artist,
+      duration: (context, event) => event.data.duration,
+      elapsed: 0,
+      likeStatus: 'unliked'
     }),
     likeSong: assign({
       // Assign the `likeStatus` to "liked"
