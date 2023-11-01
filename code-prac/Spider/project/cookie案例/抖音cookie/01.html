@@ -1,0 +1,206 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<title>éªè¯ç ä¸­é´é¡µ</title>
+<script charset="utf-8" src="https://lf-cdn-tos.bytescm.com/obj/static/sec_sdk_build/3.5.2/captcha/index.js"></script>
+<style>
+  .middle_page_loading{
+      width: 150px;
+      height: 15px;
+      margin: 0 auto;
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+  .middle_page_loading span{
+      display: inline-block;
+      width: 15px;
+      height: 100%;
+      margin-right: 5px;
+      background: #323332;
+      -webkit-transform-origin: right bottom;
+      -moz-transform-origin: right bottom;
+      -ms-transform-origin: right bottom;
+      -o-transform-origin: right bottom;
+      transform-origin: right bottom;
+      -webkit-animation: load 1s ease infinite;
+      -moz-animation: load 1s ease infinite;
+      -ms-animation: load 1s ease infinite;
+      -o-animation: load 1s ease infinite;
+      animation: load 1s ease infinite;
+  }
+  .middle_page_loading span:last-child{
+      margin-right: 0px; 
+  }
+  @keyframes load {
+    0%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+  }
+  @-webkit-keyframes load {
+    0%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+  }
+  @-moz-keyframes load {
+      0%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+  }
+  @-o-keyframes load {
+      0%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+  }
+  @-ms-keyframes load {
+      0%{
+          opacity: 1;
+      }
+      100%{
+          opacity: 0;
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+  }
+  .middle_page_loading span:nth-child(1){
+      -webkit-animation-delay: 0.13s;
+      -moz-animation-delay: 0.13s;
+      -ms-animation-delay: 0.13s;
+      -o-animation-delay: 0.13s;
+      animation-delay: 0.13s;
+  }
+  .middle_page_loading span:nth-child(2){
+      -webkit-animation-delay: 0.26s;
+      -moz-animation-delay: 0.26s;
+      -ms-animation-delay: 0.26s;
+      -o-animation-delay: 0.26s;
+      animation-delay: 0.26s;
+  }
+  .middle_page_loading span:nth-child(3){
+      -webkit-animation-delay: 0.39s;
+      -moz-animation-delay: 0.39s;
+      -ms-animation-delay: 0.39s;
+      -o-animation-delay: 0.39s;
+      animation-delay: 0.39s;
+  }
+  .middle_page_loading span:nth-child(4){
+      -webkit-animation-delay: 0.52s;
+      -moz-animation-delay: 0.52s;
+      -ms-animation-delay: 0.52s;
+      -o-animation-delay: 0.52s;
+      animation-delay: 0.52s;
+  }
+  .middle_page_loading span:nth-child(5){
+      -webkit-animation-delay: 0.65s;
+      -moz-animation-delay: 0.65s;
+      -ms-animation-delay: 0.65s;
+      -o-animation-delay: 0.65s;
+      animation-delay: 0.65s;
+  }
+</style>
+</head>
+<body>
+  <div id="captcha_container"></div>
+  <div class="middle_page_loading">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</body>
+<script>
+    function parseCookie() {
+      var obj = document.cookie.split(';')
+        .filter(function(item) {
+          return !!item.trim();
+        })
+        .reduce(function(obj, item) {
+          var pairs = item.split('=');
+          var key = pairs[0] && pairs[0].trim();
+          var val = pairs[1] && pairs[1].trim();
+          obj[key] = val;
+          return obj;
+        }, {});
+      return obj;
+    }
+    function setCookie(name, value) {
+      try {
+        if (window.sessionStorage) {
+          if (!window.sessionStorage.getItem(name)) {
+            window.sessionStorage.setItem(name, value)
+          }
+        }
+        if (window.localStorage) {
+          if (!window.localStorage.getItem(name)) {
+            window.localStorage.setItem(name, value)
+          }
+        }
+        if (!!!parseCookie()[name]) {
+          document.cookie = name + "=" + value + ";";
+        }
+      } catch (e) { }
+    }
+    setCookie("__ac_referer", document.referrer || "__ac_blank");
+    const options = {
+      commonOptions: {
+        aid: 6383,
+        iid: '0',
+        did: '0',
+      },
+      captchaOptions: {
+        hideCloseBtn: true,
+        showMode: 'mask',
+        successCb: function(){
+          setTimeout(() => {
+            location.reload();
+          }, 2000)
+        },
+      },
+    }
+    const verify_data = {"code":"10000","from":"","type":"verify","version":"","region":"cn","subtype":"text","ui_type":"","detail":"*7m4UhXw0pgZBAPzCP5OijTGYkKthJPEMHh1mLnmFUn60Uj1dh7rOk2XmZ3mvwgtADDmxY6t4c**GXdovoMgr*VKtFMiJfi7G6Wl0uU4yWyc5AuzUXML8IUl8Pw1WPM6TxxYhrQYBjxKBCabTsxLvXDFbGGN9iy1CUXmp0ezKF7A8wVDxd*bp8HTYcj*Ont9C5m9dMF1CdLMr7kuCAxpn2mmfSsFHlwHCAgd7HGlf8SOnFupybPA1RKkzEA3iJ6xqrTn5atuCfXK8t1bEK7isRDg4A-lajhKHMLgJFsv5f0-YLwzbjOYdnjB*I-IU2f*GnJvmqA64eNWx5gRlByGXZHVTUmls9wxEnEZnQ0h4PxzH6jX5r9izSdAoYV*CTgPNgsQ6sazw6tHG7xwvXDU8rbQvOOdFtUDjtdzJ7rVIdZBN2WpVGiQOvFCXIkiPIQ62JHsImdAO5Cjuv-331CewtJpKPvPKmGAvWl51uhRkLN8Uc2obn5nMD9hPoNa-NPPG9pltrI0vOFAvw..","verify_event":"15699","fp":"verify_lm3intqv_Hq3bOmG2_YHwA_42pV_APkK_P35YB7WLNOxc","server_sdk_env":"{\"idc\":\"lf\",\"region\":\"CN\",\"server_type\":\"whale\"}","log_id":"202309032156406501652A20BCD60E6EA6","is_assist_mobile":false,"is_complex_sms":false,"identity_action":"","identity_scene":""}
+    window.TTGCaptcha.init(options)
+    window.TTGCaptcha.render({
+        verify_data
+    })
+</script>
+</html>

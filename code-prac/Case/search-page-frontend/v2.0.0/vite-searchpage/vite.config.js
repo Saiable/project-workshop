@@ -7,15 +7,13 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import postCssPxToRem from "postcss-pxtorem"
 import autoPrefixer from 'autoprefixer'
-import url from './serverConfig.js';
-console.log(typeof(url))
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     vueSetupExtend(),
     AutoImport({
-      imports: ['vue', 'vue-router',],
+      imports: ['vue', 'vue-router', 'pinia'],
       dts: "src/auto-import.d.ts",
       resolvers: [ElementPlusResolver()],
     }),
@@ -23,6 +21,7 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
       dts: "src/components.d.ts",
     }),
+
   ],
   resolve: {
     alias: {

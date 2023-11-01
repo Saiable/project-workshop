@@ -84,7 +84,9 @@ export function userSignup(data) {
     data
   })
 }
-
+/**
+ * @Logic 验证昵称唯一性
+ */
 export function checkNickname(query) {
   return request({
     url: '/user/check-nickname',

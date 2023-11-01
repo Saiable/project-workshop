@@ -9,16 +9,20 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppButton: typeof import('./components/AppButton.vue')['default']
     BackGround: typeof import('./components/BackGround.vue')['default']
     ContextMenu: typeof import('./components/ContextMenu.vue')['default']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
+    ElCol: typeof import('element-plus/es')['ElCol']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElForm: typeof import('element-plus/es')['ElForm']
+    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElImage: typeof import('element-plus/es')['ElImage']
-    ElLoading: typeof import('element-plus')['ElLoading'] 
-    ElMessage: typeof import('element-plus')['ElMessage'] 
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
-    MusicPlayer: typeof import('./components/MusicPlayer.vue')['default']
+    ElInput: typeof import('element-plus/es')['ElInput']
+    ElRow: typeof import('element-plus/es')['ElRow']
+    ElTooltip: typeof import('element-plus/es')['ElTooltip']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Test: typeof import('./components/test.vue')['default']
   }
 }

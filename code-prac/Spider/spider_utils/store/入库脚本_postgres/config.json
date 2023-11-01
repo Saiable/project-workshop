@@ -1,0 +1,10 @@
+{
+    "database_postgres_01": {
+        "host": "705b31330448",
+        "port": "5432",
+        "user": "postgres",
+        "password": "postgres",
+        "dbname": "spider",
+        "options": "-c search_path=test"
+    }
+}

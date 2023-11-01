@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Saiable/project-workshop/issues"
   },
-  "homepage": "https://github.com/Saiable/project-workshop#readme"
+  "homepage": "https://github.com/Saiable/project-workshop#readme",
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  }
 }

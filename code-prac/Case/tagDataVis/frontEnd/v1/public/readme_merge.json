@@ -1,0 +1,180 @@
+[
+    {
+        "id": "0006",
+        "project": "0006_苏粮合同单据_风控",
+        "timestamp": "2023/05/18",
+        "file": [
+            {
+                "project": "0006_苏粮合同单据_风控",
+                "filename": "",
+                "file_origin": "",
+                "get_file_time": ""
+            },
+            {
+                "project": "0006_苏粮合同单据_风控",
+                "filename": "",
+                "file_origin": "",
+                "get_file_time": ""
+            }
+        ],
+        "tag": [
+            {
+                "batch": "01",
+                "intro": "pdf切分并分类",
+                "tag_filename": "",
+                "desc": "对苏粮合同中的各类pdf单据，进行切分，然后按类型汇总",
+                "start_time": "",
+                "end_time": "",
+                "file_type": "",
+                "file_number": "",
+                "tools": "",
+                "tools_path": "",
+                "category_nums": [
+                    "2"
+                ],
+                "category": "02_数据整理",
+                "external_data": [
+                    {
+                        "batch": "01",
+                        "source_file_path": "0006_苏粮合同单据_风控/batch_01_单据分类/03_20230508_单据分类处理/pdf/*.pdf",
+                        "tag_result_path": "0006_苏粮合同单据_风控/batch_01_单据分类/03_20230508_单据分类处理/单据分类结果_pdf/*",
+                        "backup_name": "0006_苏粮合同单据_风控/batch_01_单据分类/03_20230508_单据分类处理/0006_backup_batch_01.zip"
+                    }
+                ],
+                "sovled": "1"
+            },
+            {
+                "batch": "02",
+                "intro": "样例数据整理",
+                "tag_filename": "",
+                "desc": "整理苏粮合同中的样例数据",
+                "start_time": "",
+                "end_time": "",
+                "file_type": "",
+                "file_number": "",
+                "tools": "",
+                "tools_path": "",
+                "category_nums": [
+                    "2"
+                ],
+                "category": "02_数据整理",
+                "external_data": [
+                    {
+                        "batch": "02",
+                        "source_file_path": "",
+                        "tag_result_path": "",
+                        "backup_name": ""
+                    }
+                ],
+                "sovled": "1"
+            }
+        ]
+    },
+    {
+        "id": "0007",
+        "project": "0007_聊城审计档案_治理",
+        "timestamp": "2023/05/19",
+        "file": [
+            {
+                "project": "0007_聊城审计档案_治理",
+                "filename": "0007_2022审计档案.rar",
+                "file_origin": "知语群：聊城审计档案",
+                "get_file_time": "2023-05-18"
+            }
+        ],
+        "tag": [
+            {
+                "batch": "01",
+                "intro": "聊城审计需求确认",
+                "tag_filename": "",
+                "desc": "聊城审计的档案扫描样例数据已上传群共享，解压密码：8321055。请三位评估下：（1）客户的扫描文件我们能否处理，需不需要对客户的扫描做约束要求（2）客户提供的excel统计表格是否满足要求，是否需要调整 （3）对照南京市局，分析下聊城审计档案的数据跟南京的有多大差异，我们落地聊城审计档案需不需要额外的处理工作量",
+                "start_time": "",
+                "end_time": "",
+                "file_type": "",
+                "file_number": "",
+                "tools": "",
+                "tools_path": "",
+                "category_nums": [
+                    "4"
+                ],
+                "category": "4_需求确认",
+                "external_data": [
+                    {
+                        "batch": "01",
+                        "source_file_path": "",
+                        "tag_result_path": "",
+                        "backup_name": ""
+                    }
+                ],
+                "sovled": "0"
+            }
+        ]
+    },
+    {
+        "id": "0008",
+        "project": "0008_海门检察院",
+        "timestamp": "2023/05/20",
+        "file": [
+            {
+                "project": "0008_海门检察院",
+                "filename": "0008_06海门检察院",
+                "file_origin": "74/home/rhino/zkq/2023/06海门检察院/检察院土地执行",
+                "get_file_time": "2023-05-19"
+            }
+        ],
+        "tag": [
+            {
+                "batch": "01",
+                "intro": "土地行政处罚书要素标注",
+                "tag_filename": "0008_06海门检察院",
+                "desc": "算法人员对文件夹中的行政决定处罚书pdf做了与处理后，给到txt，标注26号要求演示的8个要素",
+                "start_time": "2023-05-22",
+                "end_time": "2023-05-22",
+                "file_type": "txt",
+                "file_number": "238",
+                "tools": "labelstudio",
+                "tools_path": "http://10.45.150.74:8082/projects/76/data?tab=157",
+                "category_nums": [
+                    "0",
+                    "2"
+                ],
+                "category": "00_数据标注_NER",
+                "external_data": [
+                    {
+                        "batch": "01",
+                        "source_file_path": "0008_海门检察院/batch_01_演示数据标注/tag_origin_v1/*.txt",
+                        "tag_result_path": "0008_海门检察院/batch_01_演示数据标注/tag_result_v1/project-76-at-2023-05-22-16-00-f4e5a0fd.json",
+                        "backup_name": "0008_海门检察院/batch_01_演示数据标注/0008_backup_batch_01.zip"
+                    }
+                ],
+                "sovled": "1"
+            },
+            {
+                "batch": "02",
+                "intro": "土地行政处罚书要素标注",
+                "tag_filename": "0008_06海门检察院",
+                "desc": "算法人员对文件夹中的行政决定处罚书pdf做了与处理后，给到txt，标注26号要求演示的8个要素",
+                "start_time": "2023-05-22",
+                "end_time": "2023-05-22",
+                "file_type": "txt",
+                "file_number": "238",
+                "tools": "labelstudio",
+                "tools_path": "http://10.45.150.74:8082/projects/76/data?tab=157",
+                "category_nums": [
+                    "0",
+                    "2"
+                ],
+                "category": "00_数据标注_NER",
+                "external_data": [
+                    {
+                        "batch": "02",
+                        "source_file_path": "0008_海门检察院/batch_01_演示数据标注/tag_origin_v1/*.txt",
+                        "tag_result_path": "0008_海门检察院/batch_01_演示数据标注/tag_result_v1/project-76-at-2023-05-22-16-00-f4e5a0fd.json",
+                        "backup_name": "0008_海门检察院/batch_01_演示数据标注/0008_backup_batch_01.zip"
+                    }
+                ],
+                "sovled": "1"
+            }
+        ]
+    }
+]

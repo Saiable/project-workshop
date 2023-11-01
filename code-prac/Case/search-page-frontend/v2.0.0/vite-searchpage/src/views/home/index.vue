@@ -5,7 +5,8 @@ import ls from '@/utils/db.js';
 </script>
 <template>
     <div class="home">
-        <Cover />
+        <!-- <Cover /> -->
+        
         <back-ground />
     </div>
 </template>

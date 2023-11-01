@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    catvm = {
+        memory:{
+            plugin: {
+                interator: function() {}
+            }
+        }
+    }
+    catvm.memory.plugin.interator = function value() {
+        return {
+            next: function() {
+                console.log(this)
+                if(this.index_ == undefined) {
+                    this.index_ = 0
+                }
+                var tmp = this.self_[this.index_]
+                this.index_ += 1
+                return {
+                    value: tmp,
+                    done: tmp == undefined
+                }
+            },
+            self_: this
+        }
+    }
+    var res = catvm.memory.plugin.interator()
+    // console.log(catvm)
+    // console.log(res)
+    console.log(res.next())
+    console.log(res.next())
+    console.log(res.next())
+</script>
+</html>

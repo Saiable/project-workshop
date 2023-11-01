@@ -1,0 +1,1 @@
+export const mobile_phone_reg = /^1[3456789]\d{9}$/;
